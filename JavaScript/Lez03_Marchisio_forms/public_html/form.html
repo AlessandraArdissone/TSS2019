@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Elementi di input</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="css/form.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <form>
+            <div>
+                <label for="firstName">nome:</label>
+                <input type="text" name="firstName" id="firstName" value="Alessandra" tabindex="1" placeholder="Scrivi il tuo nome" disabled="disabled" />
+            </div>
+            <div>
+                <label for="lastName">cognome:</label>
+                <input type="text" name="lastName" id="lastName" value="Ardissone" tabindex="2" placeholder="Scrivi il tuo cognome" />
+            </div>
+            <div>
+                <label for="pw">password:</label>
+                <input type="password" name="pw" id="pw" tabindex="3" placeholder="Password..." maxlength="6" />
+            </div>
+            <div>
+                <label for="swimming">nuoto</label>
+                <input type="checkbox" name="swimming" id="swimming" value="sport1" tabindex="4" checked="checked" />
+            </div>
+            <div>
+                <label for="tennis">tennis</label>
+                <input type="checkbox" name="tennis" id="tennis" value="soprt2" tabindex="5" checked />
+            </div>
+            <div>
+                <label for="judo">judo</label>
+                <input type="checkbox" name="judo" id="judo" value="sport3" tabindex="6" disabled />
+            </div>
+            <div>
+                <label for="sexM">maschio</label>
+                <input type="radio" name="sex" id="sexM" value="M" title="maschio">
+            </div>
+            <div>
+                <label for="sexF">femmina</label>
+                <input type="radio" name="sex" id="sexF" value="F" title="femmina" checked>
+            </div>
+            <div>
+                <label for="place">sede</label>
+                <select id="place" name="place">
+                    <optgroup label="Piemonte">
+                        <option value="place1">torino</option>
+                        <option value="place2">cuneo</option>
+                        <option value="place3" selected>vercelli</option>
+                        <option value="place4">novara</option>
+                        <option value="place5">asti</option>
+                        <option value="place6">alessandria</option>
+                    </optgroup>
+                    <optgroup label="Lombardia">
+                        <option value="place7">milano</option>
+                        <option value="place8">bergamo</option>
+                        <option value="place9">brescia</option>
+                    </optgroup>
+                </select>
+            </div>
+            <div>
+                <label for="notes">note</label>
+                <textarea id="notes" name="notes" placeholder="annotazioni">Testo a caso</textarea>
+            </div>
+            <div>
+                <label for="places">sedi</label>
+                <select id="places" name="places" multiple size="11">
+                    <optgroup label="Piemonte">
+                        <option value="place1">torino</option>
+                        <option value="place2">cuneo</option>
+                        <option value="place3" selected>vercelli</option>
+                        <option value="place4">novara</option>
+                        <option value="place5">asti</option>
+                        <option value="place6">alessandria</option>
+                    </optgroup>
+                    <optgroup label="Lombardia">
+                        <option value="place7">milano</option>
+                        <option value="place8">bergamo</option>
+                        <option value="place9">brescia</option>
+                    </optgroup>
+                </select>
+            </div>
+        </form>
+    </body>
+</html>

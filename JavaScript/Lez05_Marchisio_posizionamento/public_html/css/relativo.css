@@ -1,0 +1,24 @@
+div{
+    border: solid 1px blue;
+    margin: 5px;
+    height: 100px;
+    width: 400px;
+}
+div:nth-child(1){
+    background-color: red;
+}
+div:nth-child(2){
+    background-color: green;
+}
+div:nth-child(3){
+    background-color: aquamarine;
+}
+div:nth-child(4){
+    background-color: yellow;
+    position: relative;
+    top: 30px;
+    left: 100px;
+}
+div:nth-child(5){
+    background-color: brown;
+}

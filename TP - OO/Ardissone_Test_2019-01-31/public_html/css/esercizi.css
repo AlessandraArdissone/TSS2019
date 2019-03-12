@@ -1,0 +1,33 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 31-gen-2019, 13.46.10
+    Author     : tss
+*/
+input.rosa {
+    background-color: pink;
+}
+
+input.azzurro {
+    background-color: lightskyblue;
+}
+
+input.afianco {
+    width: 10em;
+}
+
+div {
+    vertical-align: top;
+}
+
+div.afianco {
+    display: inline-block;
+}
+
+input[type="button"] {
+    width: auto;
+}
+

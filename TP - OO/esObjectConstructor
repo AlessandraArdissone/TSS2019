@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Object Constructors</h2>
+
+<p id="demo"></p>
+
+<script>
+// Constructor function for Person objects
+function Person(firstName,lastName,age,eyeColor,sex="M") {
+  this.firstName = firstName;
+  this.lastName = lastName;
+  this.sex = sex;
+  this.age = age;
+  this.eyeColor = eyeColor;
+  this.height = 170;
+  this.changeName = function (name) {
+    this.lastName = name;
+  };
+  this.sayHello = function () {
+  	let res = "";
+    if ( this.sex === "M" )
+    	res = "Mi chiamo " + this.firstName + " e sono un maschio di " + this.age + " anni.";
+    else
+    	res = "Mi chiamo " + this.firstName + " e sono una femmina di " + this.height + "cm di altezza.";
+    return res;
+  };
+}
+// Create a Person object
+var myMother = new Person("Sally","Rally",48,"green","F");
+var myFather = new Person("Giuda","Faus",61,"brown");
+
+// Change last name
+myMother.changeName("Doe");
+myFather.height = 177;
+
+// Display last name
+/*
+document.getElementById("demo").innerHTML =
+"My mother's last name is " + myMother.lastName + ", she's " + myMother.height + "cm tall." + myMother.sex + "<br/>" +
+"My father's last name is " + myFather.lastName + ", he's " + myFather.height + "cm tall." + myFather.sex;
+*/
+document.getElementById("demo").innerHTML = myMother.sayHello() + "<br/>" + myFather.sayHello();
+</script>
+
+</body>
+</html>
+

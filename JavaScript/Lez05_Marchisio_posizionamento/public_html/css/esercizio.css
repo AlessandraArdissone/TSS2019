@@ -1,0 +1,15 @@
+div{
+    border: solid 1px blue;
+    margin: 5px;
+    height: 100px;
+    width: 400px;
+    background-color: yellow;
+    transition: all 1s;
+    left: 0px;
+    position: relative;
+}
+div:hover{
+    background-color: red;
+    position: relative;
+    left: 80px;
+}

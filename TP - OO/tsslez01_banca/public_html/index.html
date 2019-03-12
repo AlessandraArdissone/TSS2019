@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>BANCA TSS</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+
+            button {
+                color: darkorange;
+                background-color: cadetblue;
+                border-color: coral;
+            }
+            #banca{
+                display: none;
+            }
+            #login{
+                display: block;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div id="login">
+            <h2>LOGIN</h2>
+            <input type="text" id="in_usr" placeholder="ins.username"/><br/>
+            <input type="password" id="in_pwd" placeholder="ins.password"/><br/>
+            <input type="text" id="in_tkn" placeholder="ins.token"/><br/>
+            <button onclick="loginUser()">Login</button>     
+
+
+        </div>
+        <br/>
+
+        <div id="banca">
+
+
+            <div >BANCA TSS conto corrente di: <span id="sp_name"></span></div>
+            <br/>
+
+            <input type="text" id="in_name" value="" placeholder=""/> <button id="bt_name" onclick="login()">Login</button>
+            <br/>
+            <br/>
+
+            <div id="div_saldo">Saldo Corrente: <span id="sp_saldo">0</span> €</div>
+            <br/>
+
+            <div class="versamenti"><h3>VERSAMENTI</h3></div> 
+            <!--H3 serve per dare carattere più grande-->
+            Importo da Versare: <input type="text" id="in_vers" value="" placeholder=""/> <button id="bt_vers" onclick="versaImporto()">Versa importo</button>
+            <br/>
+            <br/>
+
+            <div class="prelievi"><h3>PRELIEVI</h3></div>
+            Importo da prelevare: <input type="text" id="in_prel" value="" placeholder=""/> <button id="bt_prel" onclick="prelevaImporto()">Preleva importo</button>
+            <!-- con questo codice inserisco con type text il testo da inserire e con placeholder il testo in grigino che scompare quando digito testo oppure lasciando vuoto tra le "" nn scrive nulla-->
+            <br/>
+            <br/>
+            <br/>
+
+            <div id="div_notifiche">Area notifiche: <span id="sp_notifiche"> nulla da segnalare</span> </div>
+            <br/>
+            <br/>
+            <br/>
+
+            <div id="div_mov"><h3>MOVIMENTI:</h3>
+                <table border="1">
+                    <tr> 
+                        <th>Versamenti</th> <th>Prelevamenti</th>
+                    </tr>
+
+                    <tr> <!--contenuto dei td dovranno essere gli importi che verso o prelevo ad ognuono ci dovrà esser un <br>-->
+                        <td id="td_vers"> </td> 
+                        <td id="td_prel"> </td>      
+
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+
+    </body>
+</html>
+
+
+<script>
+
+    function login() {
+        var txlogin = document.getElementById("in_name").value;
+        document.getElementById("sp_name").innerHTML = document.getElementById("in_name").value;
+        document.getElementById("in_name").value = "";
+
+
+
+    }
+
+
+    function loginUser() {
+        var okusr = "andre";
+        var okpwd = "kmack52";
+        var oktkn = "080792";
+
+        var txusr = document.getElementById("in_usr").value;
+        var txpwd = document.getElementById("in_pwd").value;
+        var txtkn = document.getElementById("in_tkn").value;
+
+        if ((txusr === okusr && txpwd === okpwd) || txtkn === oktkn) {
+            //cosa fare se è vero e quindi ok
+            alert("ok ti faccio entrare");
+            document.getElementById("banca").style.display = "block";
+            document.getElementById("login").style.display = "none";
+
+
+        } else {
+            //cosa fare se errato
+            alert("user o passowrd errati, controlla e riprova!");
+        }
+
+
+
+    }
+
+
+
+
+
+    function versaImporto() {
+        //se in "in_vers" c'è qualcosa di errato non fare nulla ed avvertire
+        /* sintassi:
+         if ( 12>1 ){
+         //cosa fare se vero
+         }
+         else {
+         //cosa fare se falso
+         }
+         */
+
+
+        //metto la frase ad esempio "123" dentro a saldo_current
+        var txsaldo_current = document.getElementById("sp_saldo").innerHTML;
+        //metto la frase ad esempio "123" dentro a saldo_current
+        var tximp_vers = document.getElementById("in_vers").value;
+        //var saldo=saldo_current*1;
+        var saldo = Number.parseFloat(txsaldo_current);
+
+        if (isNaN(tximp_vers)) {
+            alert("non hai scritto un numero, riprova!");
+            document.getElementById("in_vers").value = " ";
+        } else {
+            var importo = Number.parseFloat(tximp_vers);
+            if (importo > 0) {
+
+
+                //sommo finalmente due numeri e non due testi
+                var nuovo_saldo = saldo + importo;
+                //imposto il nuovo valore nello span sp_saldo
+                document.getElementById("sp_saldo").innerHTML = nuovo_saldo;
+                document.getElementById("in_vers").value = "";
+
+                //sistemo la tabella dei movimenti
+                var txtd_vers = document.getElementById("td_vers").innerHTML;
+                //gli aggiungo il nuovo importo + a capo con <br>
+                txtd_vers = txtd_vers + tximp_vers + "<br/>";
+                var txtd_prel = document.getElementById("td_prel").innerHTML;
+                //idem per td_prel ma solo con <br>
+                txtd_prel = txtd_prel + "-<br/>";
+                //visualizzo i nuovi dati nelle celle td
+                document.getElementById("td_vers").innerHTML = txtd_vers;
+                document.getElementById("td_prel").innerHTML = txtd_prel;
+            } else {
+                alert("non hai scritto un numero valido, riprova!");
+                document.getElementById("in_vers").value = "";
+            }
+        }
+
+    }
+
+    function prelevaImporto() {
+
+
+        //metto la frase ad esempio "123" dentro a saldo_current
+        var txsaldo_current = document.getElementById("sp_saldo").innerHTML;
+        //metto la frase ad esempio "123" dentro a saldo_current
+        var tximp_prelev = document.getElementById("in_prel").value;
+        //var saldo=saldo_current*1;
+        var saldo = Number.parseFloat(txsaldo_current);
+
+        if (isNaN(tximp_prelev)) {
+            alert("non hai scritto un numero, riprova!");
+            document.getElementById("in_prel").value = " ";
+        } else {
+            var importo = Number.parseFloat(tximp_prelev);
+            if (importo > 0) {
+
+                //sommo finalmente due numeri e non due testi
+                var nuovo_saldo = saldo - importo;
+                //imposto il nuovo valore nello span sp_saldo
+                document.getElementById("sp_saldo").innerHTML = nuovo_saldo;
+                document.getElementById("in_prel").value = " ";
+                //sistemo la tabella dei movimenti
+                var txtd_prel = document.getElementById("td_prel").innerHTML;
+                // sottraggo il nuovo importo + a capo <br>
+                txtd_prel = txtd_prel + tximp_prelev + "<br/>";
+                var txtd_vers = document.getElementById("td_vers").innerHTML;
+                txtd_vers = txtd_vers + "-<br/>";
+                //visualizzo i nuovi dati nelle celle td
+                document.getElementById("td_vers").innerHTML = txtd_vers;
+                document.getElementById("td_prel").innerHTML = txtd_prel;
+            } else {
+                alert("non hai scritto un numero valido, riprova!");
+                document.getElementById("in_prel").value = "";
+            }
+        }
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Objects</h2>
+
+<p id="demo"></p>
+<button id="btn_add1" onclick="btnadd1_onclick()">Aumenta il voto di 1</button><br/>
+<input type="text" id="in_increase" placeholder="increm." size="5px" />
+<button id="btn_add" onclick="btnadd_onclick()">Aumenta il voto di 1</button>
+
+<script>
+// Create an object:
+var student = {
+	name			:	"Piero Angela",
+    vote			:	10,
+    examResult		:function() {
+    	let res = this.name + " è uscito con " + this.vote + ".";
+    	return res;
+    },
+	voteIncrease1	:function() {
+    	this.vote++;
+    },
+	voteIncrease	:function(value) {
+    	this.vote += value;
+    }    
+};
+
+function btnadd1_onclick() {
+	student.voteIncrease1();
+    document.getElementById("demo").innerHTML = student.examResult();
+}
+
+function btnadd_onclick() {
+	student.voteIncrease(document.getElementById("in_increase").value*1);
+    document.getElementById("demo").innerHTML = student.examResult();
+}
+
+// Display some data from the object:
+document.getElementById("demo").innerHTML = student.examResult();
+</script>
+
+</body>
+</html>
+

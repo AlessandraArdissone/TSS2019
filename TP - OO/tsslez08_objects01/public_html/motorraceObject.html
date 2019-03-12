@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Gara automobilistica Object Oriented</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="js/motorraceObject.js" type="text/javascript"></script>
+    </head>
+    <body>
+        <div><input type="text" id="in_driver" placeholder="Pilota" />
+            <input type="text" id="in_car" placeholder="Automobile" />
+            <input type="button" id="btn_add" value="Inserisci" onclick="addPilot();" />
+        </div>
+        <div id="div_errors"></div>
+        <div>
+            <button onclick="viewEnrollment()">Visualizza iscritti</button>
+            <button onclick="assignStartPosition()">Assegna griglia di partenza</button>
+        </div>
+        <div>
+            <input type="text" id="in_startPos" placeholder="Num. di griglia" />
+            <input type="text" id="in_finishPos" placeholder="Num. di arrivo" />
+            <button onclick="assignFinishPosition()">Assegna ordine di arrivo</button>
+        </div>
+        <div id="div_race"></div>
+        <div>
+            <button onclick="viewRaceArrivals()">Ordine di arrivo</button>
+        </div>
+        <div id="div_stage" style="position:absolute; width:400px; height:400px; background-color:yellow;"></div>
+    </body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Seconda parte</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="js/scripts2.js"></script>
+    </head>
+    <body onload="view_summary();view_list();">
+        <table>
+            <tr>
+                <td>
+                    <input id="in_name" type="text" placeholder="Nome" />
+                </td>
+                <td>
+                    <input id="in_surname" type="text" placeholder="Cognome" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input id="btn_hello" type="button" value="HELLO" onclick="make_greetings();" />
+                </td>
+                <td>
+                    <span id ="out_greetings"></span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input id="in_vote" type="text" placeholder="Voto conseguito" />
+                </td>
+                <td>
+                    <input id="in_minvote" type="text" placeholder="Voto minimo richiesto" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input id="btn_calculate" type="button" value="ESAME" onclick="exam_result();" />
+                </td>
+                <td>
+                    <span id ="out_exam"></span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input id="btn_calculateUPPER" type="button" value="ESAME in MAIUSCOLO" onclick="exam_resultUPPER();" />
+                </td>
+                <td>
+                    <span id ="out_examUPPER"></span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input id="btn_addVote" type="button" value="INSERISCI VOTO" onclick="addVote();" />
+                </td>
+                <td>
+                    <span id ="out_summary"></span>
+                </td>
+            </tr>
+            <tr valign="top">
+                <td>
+                    <input id="btn_addNameVote" type="button" value="INSERISCI NOME E VOTO" onclick="addNameVote();" />
+                </td>
+                <td>
+                    <span id ="out_list"></span>
+                </td>
+            </tr>
+        </table>
+    </body>
+</html>

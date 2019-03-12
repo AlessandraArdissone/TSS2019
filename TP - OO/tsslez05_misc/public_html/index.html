@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>VOTI</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="js/scripts.js"></script>
+        <style>
+            td { vertical-align: top}
+        </style>
+    </head>
+    <body onload="print_don();">
+        <h2>Prego, votare qui:</h2>
+        <table>
+            <tr>
+                <td width="50%">
+                    <input id="in_voto" value="0" placeholder="ins. voto" max="100" min="0" type="number"><br/>
+                    <input type="button" value="VOTA" onclick="addVota()"><br/>
+                    <input type="button" value="MostraMedia" onclick="showAverage()"><br/>
+                    Voto medio: <span id="average">0</span>
+                </td>
+                <td><div id="div_voti">nessun voto</div>
+                </td>
+            </tr>
+        </table>
+    </body>
+</html>

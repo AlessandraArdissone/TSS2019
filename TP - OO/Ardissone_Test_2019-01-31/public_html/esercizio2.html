@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Esercizio 2</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="js/esercizio2.js" type="text/javascript"></script>
+        <link href="css/esercizi.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body onload="vediPortafoglio();">
+        <h1>Alessandra Ardissone - Esercizio 2</h1>
+        <div>QUIZ: per passare minimo 40 punti e almeno una risposta corretta per colore.</div>
+        <div class="afianco">
+            <input class="rosa" type="text" id="in_cuccarini" placeholder="Ins. nome Cuccarini - pt. 10" /><br />
+            <input class="rosa" type="text" id="in_hunziker" placeholder="Ins. nome Hunziker - pt. 10" /><br />
+            <input class="azzurro" type="text" id="in_leviMontalcini" placeholder="Ins. nome Levi Montalcini - pt. 20" /><br />
+            <input class="azzurro" type="text" id="in_majorana" placeholder="Ins. nome Majorana - pt. 30" />
+        </div>
+        <div class="afianco">
+            <div>
+                <input type="button" value="Invia test" onclick="inviaTest();" />
+            </div>
+            <div id="div_test"></div>
+        </div>
+        <hr />
+        <div class="afianco">
+            <input type="text" id="in_moneta" placeholder="Ins. valore moneta (es. 0.20)" /><br />
+            <div id="div_portafoglio"></div>
+        </div>
+        <div class="afianco">
+            <input type="button" value="Prendi" onclick="prendiMonete();" />
+            <input type="button" value="Metti" onclick="mettiMonete();" />
+        </div>
+    </body>
+</html>

@@ -1,0 +1,36 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 30-gen-2019, 15.50.07
+    Author     : tss
+*/
+div {
+    border: solid 1px blue;
+    margin: 20px;
+    height: 50px;
+    transition: all 3s;
+}
+
+div:nth-child(2):hover {
+  /*transform: rotate(30deg);*/
+    transform: rotateZ(30deg);
+}
+
+div:nth-child(3):hover {
+    transform: rotateX(60deg);
+}
+
+div:nth-child(4):hover {
+    transform: rotateY(45deg);
+}
+
+h1 {
+    transition: all 3s;
+}
+
+h1:nth-child(1):hover {
+    transform: rotateZ(-30deg);
+}

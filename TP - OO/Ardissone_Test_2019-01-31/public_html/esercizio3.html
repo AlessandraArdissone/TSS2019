@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Esercizio 3</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="js/esercizio3_classi.js" type="text/javascript"></script>
+        <script src="js/esercizio3.js" type="text/javascript"></script>
+        <link href="css/esercizi.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body onload="init();">
+        <h1>Alessandra Ardissone - Esercizio 3</h1>
+        <div class="afianco">
+            <input class="azzurro" type="text" id="in_larghezza" placeholder="Ins. larghezza mt." /><br />
+            <input class="azzurro" type="text" id="in_lunghezza" placeholder="Ins. lunghezza mt." /><br />
+            <input class="azzurro" type="text" id="in_costomq" placeholder="Ins. costo €/mq" /><br />
+            <input class="azzurro" type="text" id="in_materiale" placeholder="Ins. materiale copertura" />
+        </div>
+        <div class="afianco">
+            <div>
+                <input type="button" value="crea pavimento" onclick="creaPavimento();" />
+            </div>
+            <div id="div_pavimento"></div>
+        </div>
+        <hr />
+        <div class="afianco">
+            <input type="text" id="in_cliente" placeholder="Ins. nome cliente" /><br />
+            <div id="div_preventivo"></div>
+        </div>
+        <div class="afianco">
+            <input type="button" value="crea preventivo cliente" onclick="creaPreventivo();" /><br />
+            <input type="button" value="aggiungi preventivo pavimento sopra" onclick="aggiungiPavimento();" /><br />
+            <input type="button" id="btn_elPav" value="elimina preventivo pavimento selezionato" onclick="eliminaPavimento();" />
+        </div>
+    </body>
+</html>

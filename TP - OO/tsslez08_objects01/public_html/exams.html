@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Esami</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="js/exams.js"></script>
+    </head>
+    <body>
+        <div>
+            <input type="text" id="in_firstName" placeholder="Nome" />
+            <input type="text" id="in_lastName" placeholder="Cognome" />
+            <input type="text" id="in_vote" placeholder="Voto" />
+            <input type="button" id="btn_add" value="Inserisci" onclick="add_exam();" />
+        </div>
+        <div id="div_exams"></div>
+        <div id="div_errors"></div>
+    </body>
+</html>

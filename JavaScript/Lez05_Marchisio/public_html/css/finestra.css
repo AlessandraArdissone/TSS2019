@@ -1,0 +1,85 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 4-feb-2019, 13.43.25
+    Author     : tss
+*/
+
+.titolo{
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    background-color: purple;
+    color: white;
+    font-weight: bold;
+    width: 100%;
+}
+.pOk{
+    left: 25px;
+    bottom: 100px;
+    width:100px;
+    height: 30px;
+}
+.pAnnulla{
+    left: 25px;
+    bottom: 50px;
+    width:100px;
+    height: 30px;
+}
+.direzione{
+    width:30px;
+    
+    border: inset 2px aquamarine;
+    
+    line-height: 30px;
+}
+
+.pulsante:active{
+    border: outset 2px aquamarine;
+}
+
+.nord{
+    left: 300px;
+    bottom: 110px
+}
+
+.sud{
+    left: 300px;
+    bottom: 50px;
+}
+.ovest{
+    left: 270px;
+    bottom: 80px;
+}
+
+.est{
+    left: 330px;
+    bottom: 80px;
+}
+
+.contenitore{
+    position: relative;
+    height: 250px;
+    width: 400px;
+    border: solid 2px blue;
+    box-shadow: 5px 5px 5px aqua;
+    border-radius: 10px;
+}
+
+.contenitore div{
+    position: absolute;
+    border: solid 1px aquamarine;
+    text-align: center;
+    box-shadow: 2px 2px 2px aquamarine;
+}
+
+.pulsante{
+    border-radius: 5px;
+    background-color: purple;
+    color: white;
+    cursor: pointer;
+    height: 30px;
+    
+}

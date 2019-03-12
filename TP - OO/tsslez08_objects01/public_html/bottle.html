@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Bottiglia</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="js/bottle.js" type="text/javascript"></script>
+        <style>
+            input {
+                min-width: 150px
+            }
+            
+            #div_box {
+                background-color:   lightblue;
+                border:             solid 1px;
+                height:             300px;
+                position:           absolute;
+                width:              300px;
+            }
+            
+            #div_graphic {
+                background-color:   darkblue;
+                bottom:             0px;
+                height:             0px;
+                left:               100px;
+                position:           absolute;
+                width:              100px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="div_bottle" style="min-height: 100px"></div>
+        <hr />
+        <div id="div_create">
+            <input type="text" id="in_brand" placeholder="Marca" />
+            <input type="text" id="in_volume" placeholder="Capacit&agrave;" />
+            <button onclick="createBottle()">Crea bottiglia</button>
+        </div>
+        <hr />
+        <div id="div_pour">
+            <button onclick="pourFromBottle()">Bevi</button>
+            <input type="range" id="rn_pour" min="0" max="100" step="10" value="0" onchange="setSpValue()" />
+            <span id="sp_pour" style="min-width: 50px">0</span>
+        </div>
+        <hr />
+        <div id="div_fill">
+            <button onclick="fillInBottle()">Riempi</button>
+            <input type="range" id="rn_fill" min="0" max="100" step="10" value="0" onchange="setSpValue()" />
+            <span id="sp_fill" style="min-width: 50px">0</span>
+        </div>
+        <hr />
+        <div id="div_box">
+            <div id="div_graphic"></div>
+        </div>
+    </body>
+</html>

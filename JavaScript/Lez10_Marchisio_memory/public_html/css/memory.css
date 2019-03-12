@@ -1,0 +1,40 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 25-feb-2019, 10.16.54
+    Author     : tss
+*/
+table.campoGioco {
+    /*border-collapse: collapse;*/
+}
+
+.campoGioco td {
+    border: solid 1px black;
+    height: 200px;
+    width: 200px;
+    background-size: cover;
+}
+
+div.dorsoCarta  {
+    height: 200px;
+    width: 200px;
+    background-image: url('../img/rock.jpg');
+    background-size: cover;
+    transition: all 2s;
+    transform-origin: right top;
+}
+
+div#lockScreen {
+    position: fixed;
+    display: none;
+    top: 5px;
+    bottom: 5px;
+    left: 5px;
+    right: 5px;
+    background-color: rgba(0,0,0,0.0);
+    align-items: center;
+    justify-content: center;
+}
