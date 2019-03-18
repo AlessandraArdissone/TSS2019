@@ -1,0 +1,21 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 13-feb-2019, 13.21.00
+    Author     : tss
+*/
+div.aereo{
+    border:   solid;
+    position: absolute;
+}
+div.selezionato{
+    outline:  dashed 3px black;
+}
+
+#imgPlane {
+    height:   100%;
+    width:    100%;
+}

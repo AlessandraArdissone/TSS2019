@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Form e pulsanti</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="css/forms_buttons.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <div class="inline">
+            <form method="get" action="detination_page.html">
+                <div class="inline">
+                    <div>
+                        <label for="firstName">Nome:</label>
+                        <input type="text" name="firstName" id="firstName" value="Alessandra" tabindex="1" placeholder="Scrivi il tuo nome" />
+                    </div>
+                    <div>
+                        <label for="lastName">Cognome:</label>
+                        <input type="text" name="lastName" id="lastName" value="Ardissone" tabindex="2" placeholder="Scrivi il tuo cognome" />
+                    </div>
+                    <div>
+                        <label for="pw">Password:</label>
+                        <input type="password" name="pw" id="pw" tabindex="3" placeholder="Password..." maxlength="6" />
+                    </div>
+                    <div>
+                        <label for="swimming">Nuoto</label>
+                        <input type="checkbox" name="swimming" id="swimming" value="sport1" tabindex="4" />
+                    </div>
+                    <div>
+                        <label for="tennis">Tennis</label>
+                        <input type="checkbox" name="tennis" id="tennis" value="soprt2" tabindex="5" />
+                    </div>
+                    <div>
+                        <label for="judo">Judo</label>
+                        <input type="checkbox" name="judo" id="judo" value="sport3" tabindex="6" />
+                    </div>
+                    <div>
+                        <label for="sexM">Maschio</label>
+                        <input type="radio" name="sex" id="sexM" value="M" title="maschio">
+                    </div>
+                    <div>
+                        <label for="sexF">Femmina</label>
+                        <input type="radio" name="sex" id="sexF" value="F" title="femmina" />
+                    </div>
+                    <div>
+                        <label for="place">Sede</label>
+                        <select id="place" name="place">
+                            <optgroup label="Piemonte">
+                                <option value="place1">Torino</option>
+                                <option value="place2">Cuneo</option>
+                                <option value="place3">Vercelli</option>
+                                <option value="place4">Novara</option>
+                                <option value="place5">Asti</option>
+                                <option value="place6">Alessandria</option>
+                            </optgroup>
+                            <optgroup label="Lombardia">
+                                <option value="place7">Milano</option>
+                                <option value="place8">Bergamo</option>
+                                <option value="place9">Brescia</option>
+                            </optgroup>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="notes">Note</label>
+                        <textarea id="notes" name="notes" placeholder="annotazioni">Testo a caso</textarea>
+                    </div>
+                    <div>
+                        <label for="places">Sedi</label>
+                        <select id="places" name="places" multiple size="11">
+                            <optgroup label="Piemonte">
+                                <option value="place1">Torino</option>
+                                <option value="place2">Cuneo</option>
+                                <option value="place3">Vercelli</option>
+                                <option value="place4">Novara</option>
+                                <option value="place5">Asti</option>
+                                <option value="place6">Alessandria</option>
+                            </optgroup>
+                            <optgroup label="Lombardia">
+                                <option value="place7">Milano</option>
+                                <option value="place8">Bergamo</option>
+                                <option value="place9">Brescia</option>
+                            </optgroup>
+                        </select>
+                    </div>
+                </div>
+                <div class="inline">
+                    <div>
+                        <input type="button" id="in_button" name="in_button" value="Azione (input-button)" />
+                    </div>
+                    <div>
+                        <input type="reset" id="in_reset" name="in_reset" value="Ritorna ai dati iniziali (input-reset)" />
+                    </div>
+                    <div>
+                        <input type="submit" id="in_submit" name="in_submit" value="Invia dati (input-submit con modalità GET)" />
+                    </div>
+                    <div>
+                        <input type="image" id="in_image" name="in_image" alt="input type image" title="input type image" src="img/home.png" />
+                    </div>
+                </div>
+                <div class="inline">
+                    <div>
+                        <button type="button" id="btn_button" name="btn_button">Clicca<br />qui!<br />:-)<br />Azione (button-button)</button>
+                    </div>
+                    <div>
+                        <button type="reset" id="btn_reset" name="btn_reset">Azzera<br />tutto!<br />:-(<br />Ritorna ai dati iniziali (button-reset)</button>
+                    </div>
+                    <div>
+                        <button type="submit" id="btn_submit" name="btn_reset">Manda<br />la roba!<br />:-)<br />Invia dati (button-submit)</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="inline">
+            <form>
+                <div>
+                    <input type="image" id="in_image2" name="in_image2" alt="input type image" title="input type image" src="img/back.png" />
+                </div>
+            </form>
+        </div>
+        <div class="inline">
+            <form action="detination_page.html">
+                <div>
+                    <label for="in_search">Ricerca:</label>
+                    <input type="text" id="in_search" name="inin_search" placeholder="Cerca..." />
+                </div>
+            </form>
+        </div>
+    </body>
+</html>

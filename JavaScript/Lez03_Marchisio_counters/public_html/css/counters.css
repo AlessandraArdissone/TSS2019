@@ -1,0 +1,103 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 28-gen-2019, 10.44.42
+    Author     : tss
+*/
+body {
+    counter-reset:      countDiv 0;
+  /*counter-reset:      countDiv -1;*/
+  /*counter-reset:      countDiv 15;*/
+}
+
+div {
+    counter-increment:  countDiv 1;
+}
+
+div:after {
+  /*content:            '[' counter(countDiv) ']';*/
+  /*content:            '[' counter(countDiv, upper-roman) ']';*/
+    content:            '[' counter(countDiv, lower-greek) ']';
+    padding-left:       10px;
+}
+
+div:before {
+  /*content:            '[' counter(countDiv) ']';*/
+  /*content:            '[' counter(countDiv, lower-alpha) ']';*/
+    content:            '[' counter(countDiv, decimal-leading-zero) ']';
+    padding-right:      10px;
+}
+
+table {
+  /*border:             1px solid black;*/
+    border-collapse:    collapse;
+    display:            inline-block;
+    vertical-align:     top;
+    padding:            10px 10px;
+}
+
+th {
+    height:             50px;
+    width:              50px;
+    text-align:         center;
+}
+
+td {
+    height:             50px;
+    width:              50px;
+    text-align:         center;
+}
+
+#table1 {
+    counter-reset:      countRow 0 countCol 0 countCell 0;
+}
+
+#table1 tr {
+    counter-increment:  countRow 1;
+    counter-reset:      countCol 0;
+}
+
+#table1 td {
+    border:             2px solid blue;
+    counter-increment:  countCol 1 countCell 1;
+}
+
+#table1 td:before {
+    content:            counter(countRow) ',' counter(countCol, upper-alpha);
+}
+
+#table1 td:after {
+    content:            counter(countCell, decimal-leading-zero);
+    font-size:          x-small;
+    font-weight:        bold;
+    vertical-align:     bottom;
+}
+
+#table2 {
+    counter-reset:      countRow -1 countCol -1;
+}
+
+#table2 tr {
+    counter-increment:  countRow 1;
+}
+
+#table2 th {
+    border:             2px solid red;
+    counter-increment:  countCol 1;
+}
+
+#table2 th:before {
+    content:            counter(countCol, upper-alpha);
+}
+
+#table2 td {
+    border:             2px solid red;
+}
+
+#table2 td:nth-child(1):before {
+    content:            counter(countRow);
+    font-weight:        bold;
+}

@@ -1,0 +1,74 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 17-feb-2019, 11.33.42
+    Author     : tss
+*/
+body {
+    background-color: #cccccc;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+table td {
+    height: 150px;
+    width: 150px;
+    background-size: 100px 100px;
+    background-repeat: no-repeat;
+    background-position: center;
+    /*background-size: cover;*/
+}
+
+tr.bottomLine {
+    border-bottom: solid 10px black;
+}
+
+td.rightLine {
+    border-right: solid 10px black;
+}
+
+td.X {
+    background-image: url(../img/X.png);
+}
+
+td.O {
+    background-image: url(../img/O.png);
+}
+
+td.win {
+    background-color: red;
+}
+
+div.hide {
+    display: none;
+}
+
+label {
+    cursor:             pointer;
+    display:            inline-block;
+    margin-right:       20px;
+    width:              100px;
+}
+
+div.inline {
+    border: 1px solid black;
+    display: inline-block;
+    vertical-align: top;
+}
+
+div#resultContainer {
+    position: fixed;
+    display: none;
+    top: 5px;
+    bottom: 5px;
+    left: 5px;
+    right: 5px;
+    background-color: rgba(100,100,100,0.3);
+    align-items: center;
+    justify-content: center;
+}

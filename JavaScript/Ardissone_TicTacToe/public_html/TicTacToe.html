@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TIC TAC TOE</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="css/TicTacToe.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <div id="settings">
+            <div id="gameType" class="inline">
+                <label for="cpu">CPU</label>
+                <input type="radio" name="type" id="cpu" value="C" title="gioca contro il computer" /><br/>
+                <label for="twoPlayers">Due giocatori</label>
+                <input type="radio" name="type" id="two" value="P" title="gioca contro un altro giocatore" checked />
+            </div>
+            <div id="onePlayer">
+                <label for="playerX">Giocatore X</label>
+                <input type="text" id="playerXc" placeholder="Nome del giocatore &QUOT;X&QUOT;" /><br/>
+                <label for="playerO">Giocatore O</label>
+                <input type="text" id="playerOc" placeholder="Nome del giocatore &QUOT;O&QUOT;" value="CPU" readonly />
+            </div>
+            <div id="twoPlayers">
+                <label for="playerX">Giocatore X</label>
+                <input type="text" id="playerXp" placeholder="Nome del giocatore &QUOT;X&QUOT;" /><br/>
+                <label for="playerO">Giocatore O</label>
+                <input type="text" id="playerOp" placeholder="Nome del giocatore &QUOT;O&QUOT;" />
+            </div>
+            <div id="start" class="inline">
+                <button type="button" id="pStart">Avvia<br/>nuova partita</button>
+            </div>
+        </div>
+        <div id="gameContainer">
+        </div>
+        <div id="resultContainer">
+            <div id="result"></div><br/>
+            <button type="button" id="pStart" onclick="document.location=document.location">Avvia<br/>nuova partita</button>
+        </div>
+        <script src="js/TicTacToe.js" type="text/javascript"></script>
+    </body>
+</html>

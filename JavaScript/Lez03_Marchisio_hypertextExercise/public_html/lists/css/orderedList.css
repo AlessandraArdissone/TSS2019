@@ -1,0 +1,44 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+ol li {
+    border: solid 1px red;
+    /*cursor: wait;   /* clessidra, o cerchio che gira */
+    /*cursor: text;   /* ins.testo */
+    /*cursor: cell;   /* croce */
+    /*cursor: all-scroll; /* rotella premuta */
+    cursor: pointer;    /* dito, tipo link */
+    font-size: 30px;
+    font-weight: bold;
+    /*height: 20px;*/
+    height: 100px;
+    margin: 10px;   /* margine ESTERNO */
+    max-width: 200px;
+    min-width: 100px;
+    /*overflow: hidden;*/   /*ciò che esce dalla width */
+    overflow: visible;
+    padding: 20px;  /* margine INTERNO */
+    /*text-align: right;*/
+    text-align: justify;
+    /*width: 100px;*/
+    /*width: 200px;*/
+    width: 50%;
+}
+
+ol li:nth-child(-n+7):nth-last-child(-n+6) {
+    background-color: blue;
+    color: red;
+}
+
+/* (onmouseover) PSEUDO-CLASSE, la indico con i due punti */
+ol li:hover {
+    background-color: green;
+    color: gray;
+}
+/* 
+    Created on : 21-gen-2019, 13.59.24
+    Author     : tss
+*/
+

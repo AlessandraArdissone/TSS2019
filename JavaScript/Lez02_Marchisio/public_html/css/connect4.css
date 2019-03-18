@@ -1,0 +1,33 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+table.connectFour {
+    background-color: blue;
+    /*border: solid 1px gray;*/
+    border-spacing: 20px;
+    border-radius: 50px;
+    display: inline-block;  /* per vedere due o più tabelle affiancate, se c'è spazio, altrimenti la seguente va a capo */
+}
+
+table.connectFour td {
+    background-color: white;
+    /*border: solid 1px gray;*/
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+}
+
+table.connectFour tr td:nth-child(even):hover {
+    background-color: yellow;
+}
+
+table.connectFour tr td:nth-child(odd):hover {
+    background-color: red;
+}
+/* 
+    Created on : 21-gen-2019, 15.54.56
+    Author     : tss
+*/
+

@@ -1,0 +1,59 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+table.chess {
+    border: solid 1px gray;
+    border-collapse: collapse;
+    display: inline-block;  /* per vedere due o più tabelle affiancate, se c'è spazio, altrimenti la seguente va a capo */
+}
+
+table.chess td {
+    border: solid 1px gray;
+    height: 50px;
+    width: 50px;
+}
+/* il child 1 è l'h1, quindi le tabelle sono gli elementi 2 e 3 del body */
+table.chess:nth-child(2) td:hover {
+    background-color: red;
+    border-radius: 50%;
+    outline: solid 3px deeppink;
+}
+
+table.chess:nth-child(3) td:hover {
+    background-color: blue;
+    /* se mettessi "border", mi sconquasserebbe la tabella */
+    outline: solid 3px aquamarine;
+}
+/*
+#table1 td:hover {
+    background-color: red;
+}
+
+#table2 td:hover {
+    background-color: blue;
+}
+*/
+#block1 {
+    background-color: blue;
+    border: solid 1px red;
+    border-radius: 30px;    /* bordi stondati di raggio 30 pixel */
+    box-shadow: -10px 10px 20px green;  /* OMBRA: spostamento orizzontale verso destra, verticale verso il basso, sfumatura-trasparenza, colore */
+    height: 80px;
+    width: 200px;
+}
+
+#block2 {
+    background-color: deepskyblue;
+    border: solid 1px black;
+    /*border-radius: 75px;*/    /* esattamente la metà di larghezza ed altezza, quindi ottengo un cerchio */
+    border-radius: 50%;
+    height: 150px;
+    margin: 20px;
+    width: 150px;
+}
+/* 
+    Created on : 21-gen-2019, 14.49.15
+    Author     : tss
+*/
