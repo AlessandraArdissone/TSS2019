@@ -1,0 +1,36 @@
+[
+    {
+        "cognome": "Rossi",
+        "nome": "Luigi",
+        "email": "l.rossi@email.it",
+        "citta": "torino"
+    },
+    
+    {
+        "cognome": "Bianchi",
+        "nome": "Franca",
+        "email": "franca@libero.it",
+        "citta": "roma"
+    },
+    
+    {
+        "cognome": "Verdi",
+        "nome": "Michele",
+        "email": "mickey@uallera.com",
+        "citta": "milano"
+    },
+    
+    {
+        "cognome": "Neri",
+        "nome": "Giovanna",
+        "email": "jo.black@tg.com",
+        "citta": "napoli"
+    },
+    
+    {
+        "cognome": "Grigi",
+        "nome": "Tullio",
+        "email": "va.pensiero@aida.org",
+        "citta": "palermo"
+    }
+]

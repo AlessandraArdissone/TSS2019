@@ -1,0 +1,21 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 18-mar-2019, 14.14.18
+    Author     : tss
+*/
+table.tabella {
+    border-collapse: collapse;
+}
+
+table.tabella td, table.tabella th {
+    border: 1px solid gray;
+}
+
+table.tabella th {
+    background-color: blue;
+    color: white;
+}
