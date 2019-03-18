@@ -7,7 +7,8 @@ and open the template in the editor.
     Created on : 11-mar-2019, 9.19.24
     Author     : tss
 */
-div {
+div:hover {
+    cursor: default;
 }
 /*
 div:before {
@@ -23,7 +24,7 @@ div:before {
     height: 420px;
  /* border-color: red; */
     display: grid;
-    grid-template-rows: 20% 20% 20% 20% 20% 20%;
+    grid-template-rows: 70px 70px 70px 70px 70px 70px;
     grid-template-columns: 25% 25% 25% 25%;
     grid-gap: 5px 5px;
 }
