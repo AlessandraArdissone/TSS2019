@@ -10,16 +10,32 @@ package app.models;
  * @author tss
  */
 public class Customer {
-    private final int id;
+    private int id;
     private String name;
+    private String city;
+    private String country;
+
+    public Customer() {
+    }
 
     public Customer(int id, String name) {
         this.id = id;
         this.name = name;
     }
 
+    public Customer(int id, String name, String city, String country) {
+        this.id = id;
+        this.name = name;
+        this.city = city;
+        this.country = country;
+    }
+
     public int getId() {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -28,6 +44,22 @@ public class Customer {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
     }
 
     @Override

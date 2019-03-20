@@ -16,6 +16,7 @@
             <nav>
                 <a href="customerSearchServlet.html">Ricerca con Servlet</a>
                 <a href="customerSearch.jsp">Ricerca con JSP</a>
+                <a href="customerSearchAJAX.html">Ricerca AJAX (Javascript e REST service)</a>
             </nav>
         </header>
         <main></main>

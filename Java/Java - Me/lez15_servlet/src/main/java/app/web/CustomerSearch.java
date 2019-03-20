@@ -5,7 +5,7 @@
  */
 package app.web;
 
-import app.business.DbManager;
+import app.business.CustomerStore;
 import app.models.Customer;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -25,17 +25,20 @@ import javax.servlet.http.HttpServletResponse;
 public class CustomerSearch extends HttpServlet {
 
     @Inject
-    DbManager manager;
+    CustomerStore manager;
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         System.out.println("start ricerca clienti...");
+        
+        // parametro inserito da utente
         String search = req.getParameter("search");
+        
         System.out.println("ricerca di: " + search);
 
         PrintWriter wr = resp.getWriter();
 
-//        DbManager manager = new DbManager();
+//        CustomerStore manager = new CustomerStore();
 
         List<Customer> customers = manager.searchCustomer(search);
 
