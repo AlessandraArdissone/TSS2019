@@ -1,5 +1,5 @@
-CREATE DATABASE  IF NOT EXISTS `db_tssfriends` /*!40100 DEFAULT CHARACTER SET utf8mb4 */;
-USE `db_tssfriends`;
+CREATE DATABASE  IF NOT EXISTS `nostalciac` /*!40100 DEFAULT CHARACTER SET utf8mb4 */;
+USE `nostalciac`;
 -- MySQL dump 10.16  Distrib 10.1.37-MariaDB, for debian-linux-gnu (x86_64)
 --
 -- Host: localhost    Database: db_tssfriends
