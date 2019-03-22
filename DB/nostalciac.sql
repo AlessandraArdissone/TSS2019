@@ -163,7 +163,7 @@ CREATE TABLE `t_sedi` (
   `mail_sede` varchar(60) DEFAULT NULL,
   `note_sede` varchar(2000) DEFAULT NULL,
   PRIMARY KEY (`id_sede`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -172,7 +172,7 @@ CREATE TABLE `t_sedi` (
 
 LOCK TABLES `t_sedi` WRITE;
 /*!40000 ALTER TABLE `t_sedi` DISABLE KEYS */;
-INSERT INTO `t_sedi` VALUES (1,'Carlo Ghiglieno','via Varmondo Arborio, 23','+390125642934',NULL,'Ivrea','ivrea@ciacformazione.it',NULL),(2,'Adriano Sada','corso Arduino, 213','+390124364254',NULL,'Rivarolo Canavese','rivarolo@ciacformazione.it',NULL),(4,'Enfapi','stradone','+390124454456',NULL,'Valperga','valperga@ciacformazione.it',NULL);
+INSERT INTO `t_sedi` VALUES (1,'Ghiglieno-digital','via Sant\'Arborio Varmondo, 3','+390125642934',NULL,'Ivrea','ivrea@ciacformazione.it',NULL),(2,'Adriano Sada','corso Arduino, 213','+390124364254',NULL,'Rivarolo Canavese','rivarolo@ciacformazione.it',NULL),(4,'Enfapi','stradone','+390124454456',NULL,'Valperga','valperga@ciacformazione.it',NULL),(5,'Ferdinando Prat','via Sant\'Arborio Varmondo, 3','+390125642934',NULL,'Ivrea','ivrea@ciacformazione.it',NULL),(6,'Davide Negro','via Battitore, 82','+39 011 921 4534',NULL,'Ciriè','ivrea@ciacformazione.it',NULL);
 /*!40000 ALTER TABLE `t_sedi` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -277,4 +277,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-03-22 11:59:02
+-- Dump completed on 2019-03-22 17:05:31
