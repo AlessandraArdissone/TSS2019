@@ -5,6 +5,7 @@
  */
 package it.ciacformazione.nostalciac.business;
 
+import it.ciacformazione.nostalciac.entity.Sede;
 import it.ciacformazione.nostalciac.entity.Tag;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -20,8 +21,7 @@ import javax.persistence.criteria.Root;
  * @author tss
  */
 @Stateless
-public class TagStore {
-
+public class SedeStore {
     @PersistenceContext()
     EntityManager em;
 
@@ -30,74 +30,69 @@ public class TagStore {
      *
      * @return tutti i Tag
      */
-    public List<Tag> all() {
-        return em.createQuery("SELECT e FROM Tag e ORDER BY e.tag", Tag.class)
+    public List<Sede> all() {
+        return em.createQuery("SELECT e FROM Sede e ORDER BY e.nome", Sede.class)
                 .getResultList();
     }
 
     /**
      * Insert o Update su DB
      *
-     * @param tag
+     * @param sede
      * @return
      */
-    public Tag save(Tag tag) {
-        /*
-        em.persist(tag);
-        em.refresh(tag);
-        return tag;
-         */
-        return em.merge(tag);
+    public Sede save(Sede sede) {
+        return em.merge(sede);
     }
 
     /**
-     * Restituisce il Tag con id
+     * Restituisce la Sede con id
      *
      * @param id
      * @return
      */
-    public Tag find(int id) {
-        return em.find(Tag.class, id);
+    public Sede find(int id) {
+        return em.find(Sede.class, id);
     }
 
     /**
-     * Rimuove da DB il Tag tramite id
+     * Rimuove da DB la Sede tramite id
      *
      * @param id
      */
     public void remove(int id) {
         em.remove(find(id));
         // oppure:
-        // em.remove(em.find(Tag.class, id));
+        // em.remove(em.find(Sede.class, id));
     }
 
     /**
-     * Restituisce i tag trovati in base alla ricerca
+     * Restituisce le sedi trovate in base alla ricerca
      *
-     * @param searchTag
-     * @param searchTipo
+     * @param searchNome
+     * @param searchCitta
      * @return
      */
-    public List<Tag> search(String searchTag, String searchTipo) {
+    public List<Sede> search(String searchNome, String searchCitta) {
         CriteriaBuilder cb = em.getCriteriaBuilder();
-        CriteriaQuery<Tag> query = cb.createQuery(Tag.class);
-        Root<Tag> root = query.from(Tag.class);
+        CriteriaQuery<Sede> query = cb.createQuery(Sede.class);
+        Root<Sede> root = query.from(Sede.class);
 
         Predicate condition = cb.conjunction();
 
-        if (searchTag != null && !searchTag.isEmpty()) {
+        if (searchNome != null && !searchNome.isEmpty()) {
             condition = cb.and(condition,
-                    cb.like(root.get("tag"), "%" + searchTag + "%"));
+                    cb.like(root.get("nome"), "%" + searchNome + "%"));
         }
 
-        if (searchTipo != null && !searchTipo.isEmpty()) {
+        if (searchCitta != null && !searchCitta.isEmpty()) {
             condition = cb.and(condition,
-                    cb.like(root.get("tipo"), "%" + searchTipo + "%"));
+                    cb.like(root.get("citta"), "%" + searchCitta + "%"));
         }
 
         query.select(root)
                 .where(condition)
-                .orderBy(cb.asc(root.get("tipo")));
+                .orderBy(cb.asc(root.get("nome")));
 
         return em.createQuery(query)
                 .getResultList();

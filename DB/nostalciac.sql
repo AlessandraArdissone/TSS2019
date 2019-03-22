@@ -2,7 +2,7 @@ CREATE DATABASE  IF NOT EXISTS `nostalciac` /*!40100 DEFAULT CHARACTER SET utf8m
 USE `nostalciac`;
 -- MySQL dump 10.16  Distrib 10.1.37-MariaDB, for debian-linux-gnu (x86_64)
 --
--- Host: localhost    Database: db_tssfriends
+-- Host: localhost    Database: nostalciac
 -- ------------------------------------------------------
 -- Server version	10.1.37-MariaDB-0+deb9u1
 
@@ -34,6 +34,7 @@ CREATE TABLE `t_anagrafiche` (
   `mail` varchar(45) NOT NULL,
   `ruolo` varchar(2) NOT NULL DEFAULT 'U',
   `cod_citta` int(11) DEFAULT NULL,
+  `citta` varchar(50) DEFAULT NULL,
   `indirizzo` varchar(45) DEFAULT NULL,
   `tel` varchar(45) DEFAULT NULL,
   `note` varchar(2000) DEFAULT NULL,
@@ -157,11 +158,12 @@ CREATE TABLE `t_sedi` (
   `sede` varchar(100) NOT NULL,
   `indirizzo_sede` varchar(100) NOT NULL,
   `tel_sede` varchar(45) NOT NULL,
-  `cdo_citta_sede` int(11) NOT NULL,
+  `cod_citta_sede` int(11) DEFAULT NULL,
+  `citta_sede` varchar(50) DEFAULT NULL,
   `mail_sede` varchar(60) DEFAULT NULL,
   `note_sede` varchar(2000) DEFAULT NULL,
   PRIMARY KEY (`id_sede`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -170,6 +172,7 @@ CREATE TABLE `t_sedi` (
 
 LOCK TABLES `t_sedi` WRITE;
 /*!40000 ALTER TABLE `t_sedi` DISABLE KEYS */;
+INSERT INTO `t_sedi` VALUES (1,'Carlo Ghiglieno','via Varmondo Arborio, 23','+390125642934',NULL,'Ivrea','ivrea@ciacformazione.it',NULL),(2,'Adriano Sada','corso Arduino, 213','+390124364254',NULL,'Rivarolo Canavese','rivarolo@ciacformazione.it',NULL),(4,'Enfapi','stradone','+390124454456',NULL,'Valperga','valperga@ciacformazione.it',NULL);
 /*!40000 ALTER TABLE `t_sedi` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -186,7 +189,7 @@ CREATE TABLE `t_tags` (
   `tipo` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id_tag`),
   UNIQUE KEY `idx_tag` (`tag`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -195,6 +198,7 @@ CREATE TABLE `t_tags` (
 
 LOCK TABLES `t_tags` WRITE;
 /*!40000 ALTER TABLE `t_tags` DISABLE KEYS */;
+INSERT INTO `t_tags` VALUES (1,'java','informatica'),(2,'c#','informatica'),(3,'python','informatica'),(4,'english','lingue straniere'),(5,'español','lingue straniere'),(6,'sql','database');
 /*!40000 ALTER TABLE `t_tags` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -257,11 +261,11 @@ LOCK TABLES `t_tags_esperienze` WRITE;
 UNLOCK TABLES;
 
 --
--- Dumping events for database 'db_tssfriends'
+-- Dumping events for database 'nostalciac'
 --
 
 --
--- Dumping routines for database 'db_tssfriends'
+-- Dumping routines for database 'nostalciac'
 --
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -273,4 +277,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-03-12 17:03:17
+-- Dump completed on 2019-03-22 11:59:02
