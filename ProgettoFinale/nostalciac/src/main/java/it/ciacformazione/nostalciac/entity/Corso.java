@@ -7,10 +7,14 @@ package it.ciacformazione.nostalciac.entity;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.Set;
+import java.util.TreeSet;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -40,10 +44,20 @@ public class Corso implements Serializable {
 
     @Column(name = "note_corso")
     private String note;
-    
-    @ManyToOne
+
+    @ManyToOne()
     @JoinColumn(name = "id_sede", referencedColumnName = "id_sede")
     private Sede sede;
+
+    @ManyToMany()
+    @JoinTable(
+            name = "t_tags_corsi",
+            joinColumns =
+                    @JoinColumn(name = "id_corso", referencedColumnName = "id_corso"),
+            inverseJoinColumns = 
+                    @JoinColumn(name = "id_tag", referencedColumnName = "id_tag")
+    )
+    private Set<Tag> tags = new TreeSet<>();
 
     public Corso() {
     }
@@ -104,6 +118,14 @@ public class Corso implements Serializable {
         this.sede = sede;
     }
 
+    public Set<Tag> getTags() {
+        return tags;
+    }
+
+    public void setTags(Set<Tag> tags) {
+        this.tags = tags;
+    }
+
     @Override
     public int hashCode() {
         int hash = 5;
@@ -131,6 +153,8 @@ public class Corso implements Serializable {
 
     @Override
     public String toString() {
-        return "Corso{" + "id=" + id + ", nome=" + nome + ", edizione=" + edizione + ", inizio=" + inizio + ", fine=" + fine + ", note=" + note + ", sede=" + sede.getNome() + '}';
+        return "Corso{" + "id=" + id + ", nome=" + nome + ", edizione=" + edizione
+                + ", inizio=" + inizio + ", fine=" + fine + ", note=" + note
+                + ", sede=" + sede.getNome() + '}';
     }
 }

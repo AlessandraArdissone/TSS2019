@@ -14,5 +14,4 @@ public class PingResource {
     public String ping() {
         return "Enjoy Java EE 8!";
     }
-
 }
