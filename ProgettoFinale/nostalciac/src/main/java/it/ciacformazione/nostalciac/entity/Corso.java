@@ -9,14 +9,19 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Set;
 import java.util.TreeSet;
+import javax.json.bind.annotation.JsonbDateFormat;
+import javax.json.bind.annotation.JsonbTransient;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -37,18 +42,25 @@ public class Corso implements Serializable {
     private String edizione;
 
     @Column(name = "data_inizio")
+    @JsonbDateFormat("dd/MM/yyyy")
     private LocalDate inizio;
 
     @Column(name = "data_fine")
+    @JsonbDateFormat("dd/MM/yyyy")
     private LocalDate fine;
 
     @Column(name = "note_corso")
     private String note;
+    
+    @Transient
+    private Integer idSede;
 
-    @ManyToOne()
+    //@JsonbTransient
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_sede", referencedColumnName = "id_sede")
     private Sede sede;
 
+    @JsonbTransient
     @ManyToMany()
     @JoinTable(
             name = "t_tags_corsi",
@@ -108,6 +120,14 @@ public class Corso implements Serializable {
 
     public void setNote(String note) {
         this.note = note;
+    }
+
+    public Integer getIdSede() {
+        return idSede;
+    }
+
+    public void setIdSede(Integer idSede) {
+        this.idSede = idSede;
     }
 
     public Sede getSede() {

@@ -6,7 +6,9 @@
 package it.ciacformazione.nostalciac.services;
 
 import it.ciacformazione.nostalciac.business.CorsoStore;
+import it.ciacformazione.nostalciac.business.SedeStore;
 import it.ciacformazione.nostalciac.entity.Corso;
+import it.ciacformazione.nostalciac.entity.Sede;
 import java.util.List;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
@@ -25,46 +27,54 @@ import javax.ws.rs.core.MediaType;
  */
 @Path("corsi")
 public class CorsiResource {
-    
+
     @Inject
     CorsoStore store;
-    
+
+    @Inject
+    SedeStore sedeStore;
+
     @GET
     public List<Corso> findAll() {
         return store.all();
     }
-    
+
     @GET
     @Path("search")
     public List<Corso> search(
             @QueryParam("nome") String searchNome) {
         return store.search(searchNome);
     }
-    
+
     @GET
     // es.: http://localhost:8080/nostalciac/resources/corsi/2
     @Path("{id}")
     public Corso find(@PathParam("id") int id) {
         return store.find(id);
     }
-    
+
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     public void create(Corso corso) {
+        //Sede sede = sedeStore.find(corso.getSede().getId());
+        Sede sede = sedeStore.find(corso.getIdSede());
+        corso.setSede(sede);
         store.save(corso);
     }
-    
+
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("{id}")
-    public void update(@PathParam("id")int id, Corso corso) {
+    public void update(@PathParam("id") int id, Corso corso) {
         corso.setId(id);
+        Sede sede = sedeStore.find(corso.getIdSede());
+        corso.setSede(sede);
         store.save(corso);
     }
-    
+
     @DELETE
     @Path("{id}")
-    public void delete (@PathParam("id") int id) {
+    public void delete(@PathParam("id") int id) {
         store.remove(id);
     }
 }
