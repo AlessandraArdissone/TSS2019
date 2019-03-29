@@ -9,6 +9,7 @@ import it.ciacformazione.nostalciac.business.CorsoStore;
 import it.ciacformazione.nostalciac.business.SedeStore;
 import it.ciacformazione.nostalciac.entity.Corso;
 import it.ciacformazione.nostalciac.entity.Sede;
+import java.net.URI;
 import java.util.List;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
@@ -19,13 +20,16 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.QueryParam;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.UriInfo;
 
 /**
  *
  * @author tss
  */
-@Path("corsi")
+@Path("/corsi")
 public class CorsiResource {
 
     @Inject
@@ -55,11 +59,16 @@ public class CorsiResource {
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    public void create(Corso corso) {
+    public Response create(Corso corso, @Context UriInfo uriInfo) {
         //Sede sede = sedeStore.find(corso.getSede().getId());
         Sede sede = sedeStore.find(corso.getIdSede());
         corso.setSede(sede);
-        store.save(corso);
+        Corso saved = store.save(corso);
+        URI uri = uriInfo
+                .getAbsolutePathBuilder()
+                .path("/" + saved.getId())
+                .build(); 
+        return Response.ok(uri).build();
     }
 
     @PUT

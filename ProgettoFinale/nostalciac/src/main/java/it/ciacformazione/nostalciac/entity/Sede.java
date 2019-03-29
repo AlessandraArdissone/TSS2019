@@ -8,6 +8,8 @@ package it.ciacformazione.nostalciac.entity;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -19,6 +21,7 @@ import javax.persistence.Table;
 @Table(name = "t_sedi")
 public class Sede implements Serializable{
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_sede")
     private int id;
     
@@ -118,10 +121,7 @@ public class Sede implements Serializable{
             return false;
         }
         final Sede other = (Sede) obj;
-        if (this.id != other.id) {
-            return false;
-        }
-        return true;
+        return this.id == other.id;
     }
 
     @Override

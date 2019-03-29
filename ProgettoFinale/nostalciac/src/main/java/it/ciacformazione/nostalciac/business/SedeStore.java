@@ -6,7 +6,6 @@
 package it.ciacformazione.nostalciac.business;
 
 import it.ciacformazione.nostalciac.entity.Sede;
-import it.ciacformazione.nostalciac.entity.Tag;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -17,11 +16,13 @@ import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
 /**
+ * EJB - Enterprise Java Bean
  *
  * @author tss
  */
 @Stateless
 public class SedeStore {
+
     @PersistenceContext()
     EntityManager em;
 

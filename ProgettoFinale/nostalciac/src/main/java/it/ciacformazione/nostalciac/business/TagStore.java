@@ -16,7 +16,8 @@ import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
 /**
- *
+ * EJB - Enterprise Java Bean
+ * 
  * @author tss
  */
 @Stateless

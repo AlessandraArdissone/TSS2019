@@ -16,15 +16,16 @@ import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
 /**
+ * EJB - Enterprise Java Bean
  *
  * @author tss
  */
 @Stateless
 public class CorsoStore {
-    
+
     @PersistenceContext()
     EntityManager em;
-            
+
     /**
      * Restituisce tutti i Corsi da DB
      *

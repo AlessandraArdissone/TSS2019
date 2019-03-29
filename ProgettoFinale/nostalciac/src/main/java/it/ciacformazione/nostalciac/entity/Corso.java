@@ -14,6 +14,8 @@ import javax.json.bind.annotation.JsonbTransient;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
@@ -21,7 +23,6 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -32,6 +33,7 @@ import javax.xml.bind.annotation.XmlTransient;
 public class Corso implements Serializable {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_corso")
     private int id;
 
@@ -60,7 +62,7 @@ public class Corso implements Serializable {
     @JoinColumn(name = "id_sede", referencedColumnName = "id_sede")
     private Sede sede;
 
-    @JsonbTransient
+    //@JsonbTransient
     @ManyToMany()
     @JoinTable(
             name = "t_tags_corsi",
@@ -165,10 +167,7 @@ public class Corso implements Serializable {
             return false;
         }
         final Corso other = (Corso) obj;
-        if (this.id != other.id) {
-            return false;
-        }
-        return true;
+        return this.id == other.id;
     }
 
     @Override

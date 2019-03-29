@@ -8,6 +8,8 @@ package it.ciacformazione.nostalciac.entity;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -20,8 +22,8 @@ import javax.persistence.Table;
 public class Tag implements Serializable {
 
     @Id
-    // probabilmente serve solo se si crea il DB
-    //@GeneratedValue(strategy = GenerationType.IDENTITY)
+    // senza questo, non ho l'id quando creo un nuovo tag
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_tag")
     private int id;
 
@@ -77,10 +79,7 @@ public class Tag implements Serializable {
             return false;
         }
         final Tag other = (Tag) obj;
-        if (this.id != other.id) {
-            return false;
-        }
-        return true;
+        return this.id == other.id;
     }
 
     @Override
