@@ -10,7 +10,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="css/nostalciac.css" rel="stylesheet" type="text/css"/>
-        <link rel="shortcut icon" href="">
+        <link rel="shortcut icon" href="ico/ciac.ico">
         <script src="js/libreria.js" type="text/javascript"></script>
         <title>Modifica TAG</title>
     </head>

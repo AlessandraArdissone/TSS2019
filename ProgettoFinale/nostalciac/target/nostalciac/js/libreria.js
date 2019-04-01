@@ -36,7 +36,7 @@ function creaTabellaDaJson(oggJson, listaCampi, idTabella, classeTabella, conten
         riga = document.createElement("tr");
         vCampi.forEach(function (campo, j) {
             let cella = document.createElement("td");
-            cella.innerHTML = record[campo];    // oggJson[j][campo]
+            cella.innerHTML = record[campo];    // oggJson[i][campo]
             riga.appendChild(cella);
         });
         tBody.appendChild(riga);
@@ -46,4 +46,15 @@ function creaTabellaDaJson(oggJson, listaCampi, idTabella, classeTabella, conten
     if (oggJson.length > 0)
         // append della tabella al contenitore
         document.querySelector(contenitore).appendChild(tabella);
+}
+
+function getValueRadioButton(name) {
+    let valore = "";
+    document.querySelectorAll("[name=" + name + "]").forEach(function(radio, k) {
+        if (radio.checked) {
+            valore = radio.value;
+        }
+    });
+    
+    return valore;
 }
