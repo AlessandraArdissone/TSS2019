@@ -42,7 +42,7 @@ CREATE TABLE `t_anagrafiche` (
   PRIMARY KEY (`id_anagrafica`),
   KEY `idx_cog` (`cognome`),
   KEY `idx_citta` (`cod_citta`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -51,6 +51,7 @@ CREATE TABLE `t_anagrafiche` (
 
 LOCK TABLES `t_anagrafiche` WRITE;
 /*!40000 ALTER TABLE `t_anagrafiche` DISABLE KEYS */;
+INSERT INTO `t_anagrafiche` VALUES (1,'Ardissone','Alessandra','1977-02-14','ale','ardi','ale@ardi.it','A',NULL,'Cuorgnè','via Mazzini 7/A','+393338851932','fica!',NULL),(3,'Re','Blu','1999-02-28','blu','rex','blu@re.it','U',NULL,'Cuorgnè','via Mazzini 7/A','+393338851932','fichissimo!',NULL),(6,'Ardissone','Alessandra','1977-02-14','ale','ardi','ale@ardi.it','U',NULL,'Cuorgnè','via Mazzini 7/A','+393338851932','fica!',NULL),(8,'Ardissone','Alessandra','1977-02-14','ale','ardi','ale@ardi.it','U',NULL,'Cuorgnè','via Mazzini 7/A','+393338851932','fica!',NULL);
 /*!40000 ALTER TABLE `t_anagrafiche` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -102,7 +103,7 @@ CREATE TABLE `t_corsi` (
   KEY `idx_corso` (`nome_corso`),
   KEY `idx_sede` (`id_sede`),
   CONSTRAINT `fk_t_corsi_1` FOREIGN KEY (`id_sede`) REFERENCES `t_sedi` (`id_sede`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -111,6 +112,7 @@ CREATE TABLE `t_corsi` (
 
 LOCK TABLES `t_corsi` WRITE;
 /*!40000 ALTER TABLE `t_corsi` DISABLE KEYS */;
+INSERT INTO `t_corsi` VALUES (3,'TSS 2018-2019',1,'2018-2019','2018-12-20','2019-07-15','blah-blah'),(4,'CDU 2018-2019',5,'2018-2019','2018-12-20','2019-07-15','cucina duale'),(5,'TSS 2018-2019',2,'2018-2019','2018-12-20','2019-07-15','blah-blah'),(6,'Calendario Cinese 2019',2,'2019','2019-02-20','2019-05-15','cin-ciun-cian... prrrrrrrr!!!!!'),(8,'CORSO FICO!',1,'2018-2019','2018-12-20','2019-07-15','blah-blah'),(9,'CORSO SCHIFOSO CAN!',1,'2018-2019','2018-12-20','2019-07-15','blah-blah'),(10,'Corso di Prova',2,'2019','2019-02-20','2019-05-15','prova... sa, sa...');
 /*!40000 ALTER TABLE `t_corsi` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -189,7 +191,7 @@ CREATE TABLE `t_tags` (
   `tipo` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id_tag`),
   UNIQUE KEY `idx_tag` (`tag`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -198,7 +200,7 @@ CREATE TABLE `t_tags` (
 
 LOCK TABLES `t_tags` WRITE;
 /*!40000 ALTER TABLE `t_tags` DISABLE KEYS */;
-INSERT INTO `t_tags` VALUES (1,'java','informatica'),(2,'c#','informatica'),(3,'PHP','informatica'),(4,'english','lingue straniere'),(5,'español','lingue straniere'),(6,'SQL','database'),(7,'antipasti','cucina'),(12,'pnl','comunicazione'),(13,'risorgimento','storia');
+INSERT INTO `t_tags` VALUES (1,'java','informatica'),(2,'c#','informatica'),(3,'PHP','informatica'),(4,'english','lingue straniere'),(5,'español','lingue straniere'),(6,'SQL','database'),(7,'antipasti','cucina'),(12,'pnl','comunicazione'),(13,'risorgimento','storia'),(14,'storia','comunicazione'),(17,'prova','test'),(18,'uffa','test'),(20,'dai','test'),(21,'forza','test'),(22,'magnato','test');
 /*!40000 ALTER TABLE `t_tags` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -219,7 +221,7 @@ CREATE TABLE `t_tags_corsi` (
   KEY `idx_cor` (`id_corso`),
   CONSTRAINT `fk_t_tags_corsi_1` FOREIGN KEY (`id_tag`) REFERENCES `t_tags` (`id_tag`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_t_tags_corsi_2` FOREIGN KEY (`id_corso`) REFERENCES `t_corsi` (`id_corso`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -228,6 +230,7 @@ CREATE TABLE `t_tags_corsi` (
 
 LOCK TABLES `t_tags_corsi` WRITE;
 /*!40000 ALTER TABLE `t_tags_corsi` DISABLE KEYS */;
+INSERT INTO `t_tags_corsi` VALUES (3,4,8),(2,7,8),(1,13,8);
 /*!40000 ALTER TABLE `t_tags_corsi` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -277,4 +280,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-03-25 16:42:59
+-- Dump completed on 2019-04-03 16:30:20

@@ -5,6 +5,7 @@
  */
 package it.ciacformazione.nostalciac.services;
 
+import it.ciacformazione.nostalciac.business.CorsoStore;
 import it.ciacformazione.nostalciac.business.SedeStore;
 import it.ciacformazione.nostalciac.entity.Sede;
 import java.net.URI;
@@ -16,6 +17,7 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.QueryParam;
+import javax.ws.rs.container.ResourceContext;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -31,6 +33,9 @@ public class SediResource {
 
     @Inject
     SedeStore store;
+
+    @Context
+    ResourceContext rc;
 
     @GET
     public List<Sede> findAll() {
@@ -49,7 +54,9 @@ public class SediResource {
     @Path("{id}")
     // es.: http://localhost:8080/nostalciac/resources/sedi/2
     public SedeResource find(@PathParam("id") int id) {
-        return new SedeResource(id, store);
+        SedeResource resource = rc.getResource(SedeResource.class);
+        resource.setId(id);
+        return resource;
     }
 
     @POST

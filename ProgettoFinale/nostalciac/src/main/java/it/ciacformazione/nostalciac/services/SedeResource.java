@@ -5,12 +5,17 @@
  */
 package it.ciacformazione.nostalciac.services;
 
+import it.ciacformazione.nostalciac.business.CorsoStore;
 import it.ciacformazione.nostalciac.business.SedeStore;
 import it.ciacformazione.nostalciac.entity.Sede;
+import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.PUT;
+import javax.ws.rs.Path;
+import javax.ws.rs.container.ResourceContext;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
 /**
@@ -22,14 +27,17 @@ import javax.ws.rs.core.MediaType;
  */
 public class SedeResource {
 
-    private final int id;
-    private final SedeStore store;
+    private Integer id;
+    
+    @Inject
+    private SedeStore store;
+    
+    @Inject
+    private CorsoStore corsoStore;
 
-    public SedeResource(int id, SedeStore store) {
-        this.id = id;
-        this.store = store;
-    }
-
+    @Context
+    ResourceContext rc;
+    
     @GET
     public Sede find() {
         return store.find(id);
@@ -45,5 +53,16 @@ public class SedeResource {
     @DELETE
     public void delete() {
         store.remove(id);
+    }
+
+    @Path("/corsi")
+    public CorsiResource getCorsi() {
+        CorsiResource resource = rc.getResource(CorsiResource.class);
+        resource.setSedeId(id);
+        return resource;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 }

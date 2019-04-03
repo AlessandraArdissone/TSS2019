@@ -10,7 +10,6 @@ import java.time.LocalDate;
 import java.util.Set;
 import java.util.TreeSet;
 import javax.json.bind.annotation.JsonbDateFormat;
-import javax.json.bind.annotation.JsonbTransient;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -21,6 +20,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OrderBy;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -64,6 +64,7 @@ public class Corso implements Serializable {
 
     //@JsonbTransient
     @ManyToMany()
+    @OrderBy("tag ASC")
     @JoinTable(
             name = "t_tags_corsi",
             joinColumns =

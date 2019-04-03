@@ -5,8 +5,7 @@
  */
 package it.ciacformazione.nostalciac.business;
 
-import it.ciacformazione.nostalciac.entity.Corso;
-import it.ciacformazione.nostalciac.entity.Tag;
+import it.ciacformazione.nostalciac.entity.Anagrafica;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -18,78 +17,65 @@ import javax.persistence.criteria.Root;
 
 /**
  * EJB - Enterprise Java Bean
- *
+ * 
  * @author tss
  */
 @Stateless
-public class CorsoStore {
-
+public class AnagraficaStore {
+    
     @PersistenceContext()
     EntityManager em;
 
     /**
-     * Restituisce tutti i Corsi da DB
+     * Restituisce tutte le Anagrafiche da DB
      *
-     * @return tutti i Corsi
+     * @return tutte le Anagrafiche
      */
-    public List<Corso> all() {
-        return em.createQuery("SELECT e FROM Corso e ORDER BY e.nome", Corso.class)
+    public List<Anagrafica> all() {
+        return em.createQuery("SELECT e FROM Anagrafica e ORDER BY e.cognome, e.nome", Anagrafica.class)
                 .getResultList();
     }
 
     /**
      * Insert o Update su DB
      *
-     * @param corso
+     * @param anagrafica
      * @return
      */
-    public Corso save(Corso corso) {
-        return em.merge(corso);
+    public Anagrafica save(Anagrafica anagrafica) {
+        return em.merge(anagrafica);
     }
 
     /**
-     * Restituisce il Corso con id
+     * Restituisce l'Anagrafica con id
      *
      * @param id
      * @return
      */
-    public Corso find(int id) {
-        return em.find(Corso.class, id);
+    public Anagrafica find(int id) {
+        return em.find(Anagrafica.class, id);
     }
 
     /**
-     * Restituisce il Corso a partire dall'id della Sede
-     *
-     * @param sedeId
-     * @return
-     */
-    public List<Corso> findBySede(int sedeId) {
-        return em.createQuery("select e from Corso e where e.sede.id= :sede_id order by e.nome", Corso.class)
-                .setParameter("sede_id", sedeId)
-                .getResultList();
-    }
-
-    /**
-     * Rimuove da DB il Corso tramite id
+     * Rimuove da DB l'Anagrafica tramite id
      *
      * @param id
      */
     public void remove(int id) {
         em.remove(find(id));
-        // oppure:
-        // em.remove(em.find(Corso.class, id));
     }
 
     /**
-     * Restituisce i corsi trovati in base alla ricerca
+     * Restituisce le anagrafiche trovate in base alla ricerca
      *
      * @param searchNome
+     * @param searchCognome
      * @return
      */
-    public List<Corso> search(String searchNome) {
+    public List<Anagrafica> search(String searchNome, String searchCognome) {
         CriteriaBuilder cb = em.getCriteriaBuilder();
-        CriteriaQuery<Corso> query = cb.createQuery(Corso.class);
-        Root<Corso> root = query.from(Corso.class);
+        CriteriaQuery<Anagrafica> query = cb.createQuery(Anagrafica.class);
+        Root<Anagrafica> root = query.from(Anagrafica.class);
 
         Predicate condition = cb.conjunction();
 
@@ -98,17 +84,17 @@ public class CorsoStore {
                     cb.like(root.get("nome"), "%" + searchNome + "%"));
         }
 
+        if (searchCognome != null && !searchCognome.isEmpty()) {
+            condition = cb.and(condition,
+                    cb.like(root.get("cognome"), "%" + searchCognome + "%"));
+        }
+
         query.select(root)
                 .where(condition)
+                .orderBy(cb.asc(root.get("cognome")))
                 .orderBy(cb.asc(root.get("nome")));
 
         return em.createQuery(query)
-                .getResultList();
-    }
-
-    public List<Tag> findTags(int id) {
-        return em.createQuery("select e.tags from Corso e where e.id= :corso_id", Tag.class)
-                .setParameter("corso_id", id)
                 .getResultList();
     }
 }
