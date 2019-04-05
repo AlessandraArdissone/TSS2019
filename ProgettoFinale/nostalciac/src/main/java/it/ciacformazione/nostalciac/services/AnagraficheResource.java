@@ -11,19 +11,19 @@ import java.net.URI;
 import java.util.List;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
-import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
-import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.QueryParam;
+import javax.ws.rs.container.ResourceContext;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
 /**
+ * gestisce le operazioni sull'insieme delle anagrafiche
  *
  * @author tss
  */
@@ -32,6 +32,9 @@ public class AnagraficheResource {
     
     @Inject
     AnagraficaStore store;
+
+    @Context
+    ResourceContext rc;
 
     @GET
     public List<Anagrafica> findAll() {
@@ -46,11 +49,13 @@ public class AnagraficheResource {
         return store.search(searchNome, searchCognome);
     }
 
-    @GET
-    // es.: http://localhost:8080/nostalciac/resources/anagrafiche/2
+    // niente @GET per accedere ad una sottorisorsa!!
     @Path("{id}")
-    public Anagrafica find(@PathParam("id") int id) {
-        return store.find(id);
+    // es.: http://localhost:8080/nostalciac/resources/anagrafiche/2
+    public AnagraficaResource find(@PathParam("id") int id) {
+        AnagraficaResource resource = rc.getResource(AnagraficaResource.class);
+        resource.setId(id);
+        return resource;
     }
 
     @POST
@@ -62,19 +67,5 @@ public class AnagraficheResource {
                 .path("/" + saved.getId())
                 .build(); 
         return Response.ok(uri).build();
-    }
-
-    @PUT
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Path("{id}")
-    public void update(@PathParam("id")int id, Anagrafica anagrafica) {
-        anagrafica.setId(id);
-        store.save(anagrafica);
-    }
-
-    @DELETE
-    @Path("{id}")
-    public void delete (@PathParam("id") int id) {
-        store.remove(id);
     }
 }

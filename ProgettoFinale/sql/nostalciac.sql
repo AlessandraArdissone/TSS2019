@@ -40,6 +40,7 @@ CREATE TABLE `t_anagrafiche` (
   `note` varchar(2000) DEFAULT NULL,
   `filefoto` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id_anagrafica`),
+  UNIQUE KEY `idx_unico` (`mail`,`usr`,`ruolo`),
   KEY `idx_cog` (`cognome`),
   KEY `idx_citta` (`cod_citta`)
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4;
@@ -51,7 +52,7 @@ CREATE TABLE `t_anagrafiche` (
 
 LOCK TABLES `t_anagrafiche` WRITE;
 /*!40000 ALTER TABLE `t_anagrafiche` DISABLE KEYS */;
-INSERT INTO `t_anagrafiche` VALUES (1,'Ardissone','Alessandra','1977-02-14','ale','ardi','ale@ardi.it','A',NULL,'Cuorgnè','via Mazzini 7/A','+393338851932','fica!',NULL),(3,'Re','Blu','1999-02-28','blu','rex','blu@re.it','U',NULL,'Cuorgnè','via Mazzini 7/A','+393338851932','fichissimo!',NULL),(6,'Ardissone','Alessandra','1977-02-14','ale','ardi','ale@ardi.it','U',NULL,'Cuorgnè','via Mazzini 7/A','+393338851932','fica!',NULL),(8,'Ardissone','Alessandra','1977-02-14','ale','ardi','ale@ardi.it','U',NULL,'Cuorgnè','via Mazzini 7/A','+393338851932','fica!',NULL);
+INSERT INTO `t_anagrafiche` VALUES (1,'Ardissone','Alessandra','1977-02-14','ale','ardi','ale@ardi.it','A',NULL,'Cuorgnè','via Mazzini 7/A','+393338851932','fica!',NULL),(3,'Re','Blu','1999-02-28','blu','rex','blu@re.it','U',NULL,'Cuorgnè','via Mazzini 7/A','+393338851932','fichissimo!',NULL),(6,'Ardissone','Alessandra','1977-02-14','alex','ardi','ale@ardissone.it','U',NULL,'Cuorgnè','via Mazzini 7/A','+393338851932','fica!',NULL),(8,'Ardissone','Alessandra','1977-02-14','ale','ardi','ale@ardi.it','U',NULL,'Cuorgnè','via Mazzini 7/A','+393338851932','fica!',NULL);
 /*!40000 ALTER TABLE `t_anagrafiche` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -136,7 +137,7 @@ CREATE TABLE `t_esperienze` (
   KEY `idx_anagr` (`id_anagrafica`),
   KEY `idx_data` (`data_inizio_esperienza`),
   CONSTRAINT `fk_t_esperienze_1` FOREIGN KEY (`id_anagrafica`) REFERENCES `t_anagrafiche` (`id_anagrafica`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -145,6 +146,7 @@ CREATE TABLE `t_esperienze` (
 
 LOCK TABLES `t_esperienze` WRITE;
 /*!40000 ALTER TABLE `t_esperienze` DISABLE KEYS */;
+INSERT INTO `t_esperienze` VALUES (1,3,'prova modifica esperienza','note note note note note note note note note note note note note','casa mia','ITALIA','2005-12-25','2007-04-03');
 /*!40000 ALTER TABLE `t_esperienze` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -251,7 +253,7 @@ CREATE TABLE `t_tags_esperienze` (
   KEY `idx_tag` (`id_tag`),
   CONSTRAINT `fk_exp` FOREIGN KEY (`id_esperienza`) REFERENCES `t_esperienze` (`id_esperienza`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_tag` FOREIGN KEY (`id_tag`) REFERENCES `t_tags` (`id_tag`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -280,4 +282,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-04-03 16:30:20
+-- Dump completed on 2019-04-05 13:22:51

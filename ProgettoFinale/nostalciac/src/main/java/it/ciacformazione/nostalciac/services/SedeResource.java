@@ -19,7 +19,7 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
 /**
- * sottorisorsa di Sedistore
+ * sottorisorsa di SediResource
  *
  * gestisce le operazioni sulla singola sede
  *

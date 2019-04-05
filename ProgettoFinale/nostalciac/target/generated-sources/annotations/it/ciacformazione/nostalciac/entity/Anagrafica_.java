@@ -1,12 +1,14 @@
 package it.ciacformazione.nostalciac.entity;
 
 import it.ciacformazione.nostalciac.entity.Anagrafica.Ruolo;
+import it.ciacformazione.nostalciac.entity.Corso;
 import java.time.LocalDate;
 import javax.annotation.Generated;
+import javax.persistence.metamodel.SetAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2019-04-03T16:00:52")
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2019-04-05T13:21:49")
 @StaticMetamodel(Anagrafica.class)
 public class Anagrafica_ { 
 
@@ -21,6 +23,7 @@ public class Anagrafica_ {
     public static volatile SingularAttribute<Anagrafica, String> usr;
     public static volatile SingularAttribute<Anagrafica, String> tel;
     public static volatile SingularAttribute<Anagrafica, Integer> id;
+    public static volatile SetAttribute<Anagrafica, Corso> corsi;
     public static volatile SingularAttribute<Anagrafica, String> pwd;
     public static volatile SingularAttribute<Anagrafica, String> citta;
 

@@ -5,9 +5,8 @@
  */
 package it.ciacformazione.nostalciac.business;
 
-import it.ciacformazione.nostalciac.entity.Anagrafica;
-import it.ciacformazione.nostalciac.entity.Corso;
 import it.ciacformazione.nostalciac.entity.Esperienza;
+import it.ciacformazione.nostalciac.entity.Tag;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -19,47 +18,58 @@ import javax.persistence.criteria.Root;
 
 /**
  * EJB - Enterprise Java Bean
- * 
+ *
  * @author tss
  */
 @Stateless
-public class AnagraficaStore {
+public class EsperienzaStore {
     
     @PersistenceContext()
     EntityManager em;
 
     /**
-     * Restituisce tutte le Anagrafiche da DB
+     * Restituisce tutte le Esperienze da DB
      *
-     * @return tutte le Anagrafiche
+     * @return tutte le Esperienze
      */
-    public List<Anagrafica> all() {
-        return em.createQuery("SELECT e FROM Anagrafica e ORDER BY e.cognome, e.nome", Anagrafica.class)
+    public List<Esperienza> all() {
+        return em.createQuery("SELECT e FROM Esperienza e ORDER BY e.nome", Esperienza.class)
                 .getResultList();
     }
 
     /**
      * Insert o Update su DB
      *
-     * @param anagrafica
+     * @param esperienza
      * @return
      */
-    public Anagrafica save(Anagrafica anagrafica) {
-        return em.merge(anagrafica);
+    public Esperienza save(Esperienza esperienza) {
+        return em.merge(esperienza);
     }
-
+    
     /**
-     * Restituisce l'Anagrafica con id
+     * Restituisce l'Esperienza con id
      *
      * @param id
      * @return
      */
-    public Anagrafica find(int id) {
-        return em.find(Anagrafica.class, id);
+    public Esperienza find(int id) {
+        return em.find(Esperienza.class, id);
     }
-
+    
     /**
-     * Rimuove da DB l'Anagrafica tramite id
+     * Restituisce l'Esperienza a partire dall'id dell'Anagrafica
+     *
+     * @param anagraficaId
+     * @return
+     */
+    public List<Esperienza> findByAnagrafica(int anagraficaId) {
+        return em.createQuery("select e from Esperienza e where e.anagrafica.id= :anagrafica_id order by e.nome", Esperienza.class)
+                .setParameter("anagrafica_id", anagraficaId)
+                .getResultList();
+    }
+    /**
+     * Rimuove da DB l'Esperienza tramite id
      *
      * @param id
      */
@@ -68,16 +78,15 @@ public class AnagraficaStore {
     }
 
     /**
-     * Restituisce le anagrafiche trovate in base alla ricerca
+     * Restituisce le esperienze trovate in base alla ricerca
      *
      * @param searchNome
-     * @param searchCognome
      * @return
      */
-    public List<Anagrafica> search(String searchNome, String searchCognome) {
+    public List<Esperienza> search(String searchNome, String searchLuogo) {
         CriteriaBuilder cb = em.getCriteriaBuilder();
-        CriteriaQuery<Anagrafica> query = cb.createQuery(Anagrafica.class);
-        Root<Anagrafica> root = query.from(Anagrafica.class);
+        CriteriaQuery<Esperienza> query = cb.createQuery(Esperienza.class);
+        Root<Esperienza> root = query.from(Esperienza.class);
 
         Predicate condition = cb.conjunction();
 
@@ -86,23 +95,22 @@ public class AnagraficaStore {
                     cb.like(root.get("nome"), "%" + searchNome + "%"));
         }
 
-        if (searchCognome != null && !searchCognome.isEmpty()) {
+        if (searchLuogo != null && !searchLuogo.isEmpty()) {
             condition = cb.and(condition,
-                    cb.like(root.get("cognome"), "%" + searchCognome + "%"));
+                    cb.like(root.get("luogo"), "%" + searchLuogo + "%"));
         }
-
+        
         query.select(root)
                 .where(condition)
-                .orderBy(cb.asc(root.get("cognome")))
                 .orderBy(cb.asc(root.get("nome")));
 
         return em.createQuery(query)
                 .getResultList();
     }
 
-    public List<Corso> findCorsi(int id) {
-        return em.createQuery("select e.corsi from Anagrafica e where e.id= :anagrafica_id", Corso.class)
-                .setParameter("anagrafica_id", id)
+    public List<Tag> findTags(int id) {
+        return em.createQuery("select e.tags from Esperienza e where e.id= :esperienza_id", Tag.class)
+                .setParameter("esperienza_id", id)
                 .getResultList();
     }
 }

@@ -5,7 +5,6 @@
  */
 package it.ciacformazione.nostalciac.services;
 
-import it.ciacformazione.nostalciac.business.CorsoStore;
 import it.ciacformazione.nostalciac.business.SedeStore;
 import it.ciacformazione.nostalciac.entity.Sede;
 import java.net.URI;
