@@ -160,10 +160,10 @@ DROP TABLE IF EXISTS `t_sedi`;
 CREATE TABLE `t_sedi` (
   `id_sede` int(11) NOT NULL AUTO_INCREMENT,
   `sede` varchar(100) NOT NULL,
-  `indirizzo_sede` varchar(100) NOT NULL,
-  `tel_sede` varchar(45) NOT NULL,
+  `indirizzo_sede` varchar(100) DEFAULT NULL,
+  `tel_sede` varchar(45) DEFAULT NULL,
   `cod_citta_sede` int(11) DEFAULT NULL,
-  `citta_sede` varchar(50) DEFAULT NULL,
+  `citta_sede` varchar(50) NOT NULL,
   `mail_sede` varchar(60) DEFAULT NULL,
   `note_sede` varchar(2000) DEFAULT NULL,
   PRIMARY KEY (`id_sede`)
@@ -176,7 +176,7 @@ CREATE TABLE `t_sedi` (
 
 LOCK TABLES `t_sedi` WRITE;
 /*!40000 ALTER TABLE `t_sedi` DISABLE KEYS */;
-INSERT INTO `t_sedi` VALUES (1,'Ghiglieno-digital','via Sant\'Arborio Varmondo, 3','+390125642934',NULL,'Ivrea','ivrea@ciacformazione.it',NULL),(2,'Adriano Sada','corso Arduino, 213','+390124364254',NULL,'Rivarolo Canavese','rivarolo@ciacformazione.it',NULL),(4,'Enfapi','stradone','+390124454456',NULL,'Valperga','valperga@ciacformazione.it',NULL),(5,'Ferdinando Prat','via Sant\'Arborio Varmondo, 3','+390125642934',NULL,'Ivrea','ivrea@ciacformazione.it',NULL),(6,'Davide Negro','via Battitore, 82','+39 011 921 4534',NULL,'Ciriè','ivrea@ciacformazione.it',NULL);
+INSERT INTO `t_sedi` VALUES (1,'Ghiglieno-digital','via Sant\'Arborio Varmondo, 3','+390125642934',NULL,'Ivrea','ivrea@ciacformazione.it',NULL),(2,'Adriano Sada','corso Arduino, 213','+390124364254',NULL,'Rivarolo Canavese','rivarolo@ciacformazione.it','Sede OK!'),(4,'Enfapi','stradone','+390124454456',NULL,'Valperga','valperga@ciacformazione.it',''),(5,'Ferdinando Prat','via Sant\'Arborio Varmondo, 3','+390125642934',NULL,'Ivrea','ivrea@ciacformazione.it','undefined'),(6,'Davide Negro','via Battitore, 82','+39 011 921 4534',NULL,'Ciriè','ivrea@ciacformazione.it','undefined');
 /*!40000 ALTER TABLE `t_sedi` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -253,7 +253,7 @@ CREATE TABLE `t_tags_esperienze` (
   KEY `idx_tag` (`id_tag`),
   CONSTRAINT `fk_exp` FOREIGN KEY (`id_esperienza`) REFERENCES `t_esperienze` (`id_esperienza`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_tag` FOREIGN KEY (`id_tag`) REFERENCES `t_tags` (`id_tag`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -282,4 +282,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-04-05 13:22:51
+-- Dump completed on 2019-04-08 17:13:42

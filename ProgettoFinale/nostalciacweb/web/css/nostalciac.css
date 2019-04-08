@@ -34,6 +34,7 @@ and open the template in the editor.
 .campo {
     width: 35em;
     margin: auto;
+    padding-bottom: 5px;
 }
 
 input, textarea, select {
@@ -76,15 +77,61 @@ table.tabella {
     border: 1px solid gray;
 }
 
+table.tabella tr:nth-child(even) {
+    background-color: lightblue;
+}
+
 table.tabella th {
+    font-size: 20px;
     border: 1px solid gray;
     background-color: blue;
     color: white;
 }
 
 table.tabella td {
-    font-size: 12px;
+    font-size: 18px;
     border: 1px solid gray;
     border-bottom: none;
     border-top: none;
+}
+
+span.inserisciDB {
+    background-image: url(../ico/New-record-icon.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    /*background-position: center;*/
+    vertical-align: middle;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+}
+
+span.modificaDB {
+    background-image: url(../ico/edit-icon.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    /*background-position: center;*/
+    vertical-align: middle;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+}
+
+span.eliminaDB {
+    background-image: url(../ico/Trash-can-icon.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    /*background-position: center;*/
+    vertical-align: middle;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+}
+
+span.navigator {
+    border: 1px solid blue;
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-left: 2px;
+    margin-right: 2px;
 }
