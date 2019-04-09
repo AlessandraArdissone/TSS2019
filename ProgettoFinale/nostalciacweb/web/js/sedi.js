@@ -8,7 +8,8 @@ var jsonSedi;
 document.querySelector("body").onload = caricaSedi;
 
 function caricaSedi() {
-    fetch('http://localhost:8080/nostalciac/resources/sedi?' + Math.random())   // per aggirare la cache del server (ma non funziona)
+    //fetch('http://localhost:8080/nostalciac/resources/sedi?' + Math.random())   // per aggirare la cache del server (ma non funziona)
+    fetch('http://localhost:8080/nostalciac/resources/sedi')
             .then(response => response.json())
             .then(json => {
                 creaTabellaDaJsonDB(json, "nome,citta,mail", "Sede,Città,e-mail", "tabSedi", "tabella", "#div_sedi", "id", evModSede, evCancSede);

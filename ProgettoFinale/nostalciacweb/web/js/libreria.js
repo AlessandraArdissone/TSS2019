@@ -160,7 +160,7 @@ function creaNavigator(json, idx, contenitore, funz, campoId = "id") {
     sp.innerHTML = "<<";
     if (idx > 0) {
         sp.onclick = function () {
-            funz(0)
+            funz(0);
         };
     }
     document.querySelector(contenitore).appendChild(sp);
@@ -172,7 +172,7 @@ function creaNavigator(json, idx, contenitore, funz, campoId = "id") {
     sp.innerHTML = "<";
     if (idx > 0) {
         sp.onclick = function () {
-            funz(idx - 1)
+            funz(idx - 1);
         };
     }
     document.querySelector(contenitore).appendChild(sp);
@@ -191,7 +191,7 @@ function creaNavigator(json, idx, contenitore, funz, campoId = "id") {
     sp.innerHTML = ">";
     if (idx < json.length - 1) {
         sp.onclick = function () {
-            funz(idx * 1 + 1)
+            funz(idx * 1 + 1);
         };
     }
     document.querySelector(contenitore).appendChild(sp);
@@ -203,7 +203,7 @@ function creaNavigator(json, idx, contenitore, funz, campoId = "id") {
     sp.innerHTML = ">>";
     if (idx < json.length - 1) {
         sp.onclick = function () {
-            funz(json.length - 1)
+            funz(json.length - 1);
         };
     }
     document.querySelector(contenitore).appendChild(sp);
