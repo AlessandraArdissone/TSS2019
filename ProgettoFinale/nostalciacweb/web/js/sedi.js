@@ -29,8 +29,8 @@ let evModSede = function () {
 };
 
 function prepModSede( idx) {
-    console.log("prepModSede", idx)
-    let idRec = jsonSedi[idx]["id"]
+    console.log("prepModSede", idx);
+    let idRec = jsonSedi[idx]["id"];
     caricaSede(idRec);
     creaNavigator(jsonSedi, idx, "#div_nav", prepModSede, "id");
     document.querySelector("#div_modifica").style.display = "block";
@@ -85,9 +85,8 @@ document.querySelector("#b_modSede").onclick = function () {
     }).then(function (response) {
         console.log("response:", response);
         console.log("response.text():", response.text());
+        caricaSedi();
         return;
     }).catch(res => console.error("ERRORE:", res));
-
-    caricaSedi();
 }
 ;

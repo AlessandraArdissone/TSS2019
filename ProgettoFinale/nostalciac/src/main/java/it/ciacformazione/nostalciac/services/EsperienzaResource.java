@@ -5,11 +5,11 @@
  */
 package it.ciacformazione.nostalciac.services;
 
-import it.ciacformazione.nostalciac.business.CorsoStore;
-import it.ciacformazione.nostalciac.business.SedeStore;
+import it.ciacformazione.nostalciac.business.AnagraficaStore;
+import it.ciacformazione.nostalciac.business.EsperienzaStore;
 import it.ciacformazione.nostalciac.business.TagStore;
-import it.ciacformazione.nostalciac.entity.Corso;
-import it.ciacformazione.nostalciac.entity.Sede;
+import it.ciacformazione.nostalciac.entity.Anagrafica;
+import it.ciacformazione.nostalciac.entity.Esperienza;
 import it.ciacformazione.nostalciac.entity.Tag;
 import java.util.List;
 import java.util.Set;
@@ -25,23 +25,23 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
 /**
- * sottorisorsa di CorsiResource
+ * sottorisorsa di EsperienzeResource
  *
- * gestisce le operazioni sul singolo corso
+ * gestisce le operazioni sulla singola esperienza
  *
  * @author tss
  */
-public class CorsoResource {
+public class EsperienzaResource {
     
     private int id;
-    private Integer sedeId;
+    private int anagraficaId;
     
     @Inject
-    private CorsoStore store;
+    EsperienzaStore store;
     
     @Inject
-    private SedeStore sedeStore;
-    
+    AnagraficaStore anagraficaStore;
+
     @Inject
     private TagStore tagStore;
 
@@ -52,44 +52,40 @@ public class CorsoResource {
         this.id = id;
     }
 
-    public void setSedeId(Integer sedeId) {
-        this.sedeId = sedeId;
+    public void setAnagraficaId(int anagraficaId) {
+        this.anagraficaId = anagraficaId;
     }
     
     @GET
-    public Corso find() {
+    public Esperienza find() {
         return store.find(id);
     }
-
+    
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
-    public void update(Corso corso) {
-        corso.setId(id);
-        Sede sede = sedeStore.find(sedeId);
-        corso.setSede(sede);
-        store.save(corso);
+    public void update(Esperienza esperienza) {
+        esperienza.setId(id);
+        Anagrafica anagrafica = anagraficaStore.find(anagraficaId);
+        esperienza.setAnagrafica(anagrafica);
+        store.save(esperienza);
     }
 
     @DELETE
     public void delete() {
         store.remove(id);
     }
-    
+
     @GET
-    //@Path("{id}/tags")
     @Path("/tags")
-    //public List<Tag> findTags(@PathParam("id") int id) {
     public List<Tag> findTags() {
         return store.findTags(id);
     }
 
     @PUT
-    //@Path("{id}/tags")
     @Path("/tags")
     @Consumes(MediaType.APPLICATION_JSON)
-    //public void updateTags(@PathParam("id") int id, List<Integer> idTags) {
     public void updateTags(List<Integer> idTags) {
-        Corso finded = store.find(id);
+        Esperienza finded = store.find(id);
         Set<Tag> tosave = idTags.stream()
                 .map(t -> tagStore.find(t))
                 .collect(Collectors.toSet());

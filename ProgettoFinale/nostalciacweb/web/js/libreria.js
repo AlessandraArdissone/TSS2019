@@ -159,7 +159,9 @@ function creaNavigator(json, idx, contenitore, funz, campoId = "id") {
     sp.className = "navigator";
     sp.innerHTML = "<<";
     if (idx > 0) {
-        sp.onclick = function() {funz(0)};
+        sp.onclick = function () {
+            funz(0)
+        };
     }
     document.querySelector(contenitore).appendChild(sp);
 
@@ -169,7 +171,9 @@ function creaNavigator(json, idx, contenitore, funz, campoId = "id") {
     sp.className = "navigator";
     sp.innerHTML = "<";
     if (idx > 0) {
-        sp.onclick = function() {funz( idx-1)};
+        sp.onclick = function () {
+            funz(idx - 1)
+        };
     }
     document.querySelector(contenitore).appendChild(sp);
 
@@ -177,7 +181,7 @@ function creaNavigator(json, idx, contenitore, funz, campoId = "id") {
     sp.setAttribute("name", "sp_page");
     sp.setAttribute("id", "sp_page");
     sp.className = "navigator";
-    sp.innerHTML = (idx*1+1) + " / " + json.length;
+    sp.innerHTML = (idx * 1 + 1) + " / " + json.length;
     document.querySelector(contenitore).appendChild(sp);
 
     sp = document.createElement("span");
@@ -185,8 +189,10 @@ function creaNavigator(json, idx, contenitore, funz, campoId = "id") {
     sp.setAttribute("id", "sp_next");
     sp.className = "navigator";
     sp.innerHTML = ">";
-    if (idx < json.length-1) {
-        sp.onclick = function() {funz( idx*1+1)};
+    if (idx < json.length - 1) {
+        sp.onclick = function () {
+            funz(idx * 1 + 1)
+        };
     }
     document.querySelector(contenitore).appendChild(sp);
 
@@ -195,8 +201,10 @@ function creaNavigator(json, idx, contenitore, funz, campoId = "id") {
     sp.setAttribute("id", "sp_last");
     sp.className = "navigator";
     sp.innerHTML = ">>";
-    if (idx < json.length-1) {
-        sp.onclick = function() {funz(json.length-1)};
+    if (idx < json.length - 1) {
+        sp.onclick = function () {
+            funz(json.length - 1)
+        };
     }
     document.querySelector(contenitore).appendChild(sp);
 }
