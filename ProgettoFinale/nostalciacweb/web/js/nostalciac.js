@@ -3,6 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+document.querySelector("#homeMenu").classList.add("active");
+
 document.querySelector("#callDB").onclick = function () {
     fetch('http://localhost:8080/nostalciac/resources/tags')
             .then(response => response.json())

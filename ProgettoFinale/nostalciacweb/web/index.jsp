@@ -9,19 +9,25 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link href="css/nostalciac.css" rel="stylesheet" type="text/css"/>
-        <link rel="shortcut icon" href="ico/ciac.ico">
-        <script src="js/libreria.js" type="text/javascript"></script>
+        <jsp:include page="includes/headlinks.jsp" />
         <title>NOSTALCIAC</title>
     </head>
     <body>
-        <h1>NostalCIAC!</h1>
-        <input type="button" id="callDB" value="Tags" />
-        <input id="in_findID" type="text" placeholder="id del tag da cercare...">
-        <input type="button" id="findID" value="cerca ID">
-        <input type="button" id="b_post" value="inserisci TAG">
-        <hr>
-        <div id="risultato"></div>
+        <jsp:include page="./includes/menu.jsp" />
+        <main class="content">
+            <article>
+                <h1>NostalCIAC!</h1>
+                <!--        
+                        <input type="button" id="callDB" value="Tags" />
+                        <input id="in_findID" type="text" placeholder="id del tag da cercare...">
+                        <input type="button" id="findID" value="cerca ID">
+                        <input type="button" id="b_post" value="inserisci TAG">
+                        <hr>
+                        <div id="risultato"></div>
+                -->
+            </article>
+        </main>
+        <jsp:include page="./includes/footer.jsp" />
     </body>
     <script src="js/nostalciac.js" type="text/javascript"></script>
 </html>

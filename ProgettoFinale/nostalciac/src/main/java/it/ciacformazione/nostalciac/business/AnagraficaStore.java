@@ -7,10 +7,12 @@ package it.ciacformazione.nostalciac.business;
 
 import it.ciacformazione.nostalciac.entity.Anagrafica;
 import it.ciacformazione.nostalciac.entity.Corso;
-import it.ciacformazione.nostalciac.entity.Esperienza;
 import java.util.List;
+import java.util.Optional;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
+import javax.persistence.NonUniqueResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -19,14 +21,27 @@ import javax.persistence.criteria.Root;
 
 /**
  * EJB - Enterprise Java Bean
- * 
+ *
  * @author tss
  */
 @Stateless
 public class AnagraficaStore {
-    
+
     @PersistenceContext()
     EntityManager em;
+
+    public Optional<Anagrafica> login(String usr, String pwd) {
+        try {
+            Anagrafica p = em.createQuery("SELECT e FROM Anagrafica e "
+                    + "WHERE e.usr = :usr AND e.pwd = :pwd", Anagrafica.class)
+                    .setParameter("usr", usr)
+                    .setParameter("pwd", pwd)
+                    .getSingleResult();
+            return Optional.of(p);
+        } catch (NoResultException | NonUniqueResultException ex) {
+            return Optional.empty();
+        }
+    }
 
     /**
      * Restituisce tutte le Anagrafiche da DB

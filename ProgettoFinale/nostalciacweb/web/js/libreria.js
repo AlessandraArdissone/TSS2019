@@ -149,6 +149,7 @@ function getRecJson(obJson, campoId = "id", id) {
  * @returns {undefined}
  */
 function creaNavigator(json, idx, contenitore, funz, campoId = "id") {
+//    document.querySelector(contenitore).innerHTML = "<label for='sp_prev'>&nbsp;</label>";
     document.querySelector(contenitore).innerHTML = "";
 
     let sp;

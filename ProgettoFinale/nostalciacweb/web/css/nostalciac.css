@@ -16,10 +16,6 @@ and open the template in the editor.
     font-family: 'antaro';
 }
 
-.campo {
-    /*font-family: 'Arial';*/
-}
-
 .campo label:first-child {
     display: inline-block;
     width: 10em;
@@ -33,8 +29,17 @@ and open the template in the editor.
 */
 .campo {
     width: 35em;
-    margin: auto;
+    /*margin: auto;*/
     padding-bottom: 5px;
+}
+
+#div_cont_nav {
+    display: flex;
+}
+
+#div_nav {
+    text-align: center;
+    width: 17em;
 }
 
 input, textarea, select {
@@ -67,6 +72,15 @@ textarea {
     .campo label:nth-child(1) {
         width: 100%;
         display: block;
+        text-align: center;
+    }
+    
+    #div_cont_nav {
+        display: block;
+    }
+    
+    #div_nav {
+        width: 100%;
         text-align: center;
     }
 }
@@ -134,4 +148,92 @@ span.navigator {
     padding-right: 5px;
     margin-left: 2px;
     margin-right: 2px;
+}
+
+body {margin: 0;}
+
+ul.sidenav {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 25%;
+  background-color: #D3FFFF;
+  position: fixed;
+  height: 100%;
+  overflow: auto;
+}
+
+ul.sidenav li a {
+  display: block;
+  color: #000;
+  background-color: #7badfc;
+  padding: 8px 16px;
+  text-decoration: none;
+  font-weight: bolder;
+}
+ 
+ul.sidenav li a.active {
+  background-color: #3480f9;
+  color: white;
+}
+
+ul.sidenav li a:hover {
+  background-color: #444;
+  color: white;
+}
+
+ul.sidenav li a:hover:not(.active) {
+  background-color: #555;
+  color: white;
+}
+
+.content {
+  margin-left: 25%;
+  padding: 5px 5px;
+}
+
+@media screen and (max-width: 900px) {
+    header {
+        position: sticky;
+        position: -webkit-sticky; /* Safari */
+        top: 0;
+    }
+    
+  ul.sidenav {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+  
+  ul.sidenav li a {
+    float: left;
+    padding: 15px;
+    width: 8em;
+}
+  
+  .content {margin-left: 0;}
+  
+  footer {
+      width: 100% !important;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  ul.sidenav li a {
+    text-align: center;
+    float: none;
+    width: auto;
+  }
+}
+
+footer {
+    text-align: center;
+    font-weight: bolder;
+    font-size: smaller;
+    background-color: blue;
+    color: white;
+    padding: inherit !important;
+    position: fixed;
+    bottom: 0;
+    width: 75%;
 }
