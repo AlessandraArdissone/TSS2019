@@ -17,6 +17,14 @@
         <main class="content">
             <article>
                 <h1>Modifica TAG</h1>
+                        
+                        <input type="button" id="callDB" value="Tags" />
+                        <input id="in_findID" type="text" placeholder="id del tag da cercare...">
+                        <input type="button" id="findID" value="cerca ID">
+                        <input type="button" id="b_post" value="inserisci TAG">
+                        <hr>
+                        <div id="risultato"></div>
+                
                 <div id="risultato"></div>
                 <form>
                     <select id="sel_tags">

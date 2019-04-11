@@ -3,12 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+document.querySelector("#tagsMenu").classList.add("active");
+
 var jsonTags;
 
 function caricaTag() {
     fetch('http://localhost:8080/nostalciac/resources/tags')
             .then(response => {
-                console.log("response...", response);
+//                console.log("response...", response);
                 return response.json();
             })
             .then(json => {
@@ -18,7 +20,7 @@ function caricaTag() {
             .then(e => caricaSelect())
             .catch(x => {
                 alert("err" + x);
-                console.log("err", x);
+//                console.log("err", x);
             });
 }
 
@@ -60,11 +62,11 @@ document.querySelector("#sel_tags").onchange = function (e) {
      */
     document.querySelector("#tag").value = tag;
     document.querySelector("#tipo").value = tipo;
-    console.log(idTag, tipo, tag);
+//    console.log(idTag, tipo, tag);
 };
 
 document.querySelector("#b_modTag").onclick = function () {
-    console.log("click su modifica tag");
+//    console.log("click su modifica tag");
 
     let indiceOpzione = document.querySelector("#sel_tags").selectedIndex;
     let opzioneSelezionata = document.querySelector("#sel_tags").options[indiceOpzione];
@@ -78,7 +80,7 @@ document.querySelector("#b_modTag").onclick = function () {
     obj.tipo = document.querySelector("#tipo").value;
     obj.tag = document.querySelector("#tag").value;
 
-    console.log("invio", obj);
+//    console.log("invio", obj);
 
     fetch('http://localhost:8080/nostalciac/resources/tags/' + idTag, {
         method: 'put',
@@ -91,11 +93,41 @@ document.querySelector("#b_modTag").onclick = function () {
         body: JSON.stringify(obj)
 
     }).then(function (response) {
-        console.log("response:", response);
-        console.log("response.text():", response.text());
-
+//        console.log("response:", response);
+//        console.log("response.text():", response.text());
         caricaTag();
         caricaSelect();
         return ;
     }).catch(res => console.error("ERRORE:", res));
+};
+
+document.querySelector("#callDB").onclick = function () {
+    fetch('http://localhost:8080/nostalciac/resources/tags')
+            .then(response => response.json())
+            .then(json => {
+                creaTabellaDaJson(json, "", "tabTags", "tabella", "#risultato");
+//                console.log(json);
+            })
+            .catch(x => {
+                alert("err" + x);
+//                console.log("err", x);
+            });
+};
+
+document.querySelector("#b_post").onclick = function () {
+    fetch('http://localhost:8080/nostalciac/resources/tags', {
+        method: 'post',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            "tag": "storia",
+            "tipo": "comunicazione"
+        })
+    })
+            .then(function (response) {
+                console.log("response:", response);
+            })
+            .catch(res => console.error(res));
 };

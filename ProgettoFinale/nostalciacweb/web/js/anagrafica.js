@@ -3,6 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+document.querySelector("#anagMenu").classList.add("active");
+
 document.querySelector("#pButton").onclick = controllaDati;
 /*
  document.querySelector("#pSubmit").onclick = function () {

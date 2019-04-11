@@ -10,6 +10,7 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
@@ -32,7 +33,23 @@ public class TagStore {
      * @return tutti i Tag
      */
     public List<Tag> all() {
-        return em.createQuery("SELECT e FROM Tag e ORDER BY e.tag", Tag.class)
+//        return all(0, 10);
+        return em.createQuery("SELECT e FROM Tag e ORDER BY e.tipo, e.tag", Tag.class)
+                .getResultList();
+    }
+    
+    /**
+     * Paginazione
+     *
+     * @param start
+     * @param maxResult
+     * 
+     * @return 
+     */
+    public List<Tag> all(int start, int maxResult) {
+        return em.createQuery("SELECT e FROM Tag e ORDER BY e.tipo, e.tag", Tag.class)
+                .setFirstResult(start)
+                .setMaxResults(maxResult)
                 .getResultList();
     }
 
@@ -98,7 +115,8 @@ public class TagStore {
 
         query.select(root)
                 .where(condition)
-                .orderBy(cb.asc(root.get("tipo")));
+                .orderBy(cb.asc(root.get("tipo")))
+                .orderBy(cb.asc(root.get("tag")));
 
         return em.createQuery(query)
                 .getResultList();
