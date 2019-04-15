@@ -12,6 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 /**
  *
@@ -32,6 +33,9 @@ public class Tag implements Serializable {
 
     @Column(name = "tipo")
     private String tipo;
+
+    @Transient
+    private String url;
 
     public Tag() {
     }
@@ -58,6 +62,14 @@ public class Tag implements Serializable {
 
     public void setTipo(String tipo) {
         this.tipo = tipo;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     @Override
