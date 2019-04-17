@@ -14,7 +14,7 @@ function caricaTag() {
                 return response.json();
             })
             .then(json => {
-                creaTabellaDaJson(json, "", "tabTags", "tabella", "#risultato");
+                creaTabellaDaJson(json["data"], "", "tabTags", "tabella", "#risultato");
                 jsonTags = json;
             })
             .then(e => caricaSelect())

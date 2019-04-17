@@ -19,7 +19,7 @@ import javax.persistence.criteria.Root;
 
 /**
  * EJB - Enterprise Java Bean
- * 
+ *
  * @author tss
  */
 @Stateless
@@ -38,14 +38,14 @@ public class TagStore {
         return em.createQuery("SELECT e FROM Tag e ORDER BY e.tipo, e.tag", Tag.class)
                 .getResultList();
     }
-    
+
     /**
      * Paginazione
      *
      * @param start
      * @param maxResult
-     * 
-     * @return 
+     *
+     * @return
      */
     public List<Tag> all(int start, int maxResult) {
         return em.createQuery("SELECT e FROM Tag e ORDER BY e.tipo, e.tag", Tag.class)
@@ -99,7 +99,7 @@ public class TagStore {
      * @param page
      * @return
      */
-    public List<Tag> search(String searchTag, String searchTipo, int start, int page) {
+    public List<Tag> search(String searchTag, String searchTipo, Integer start, Integer page) {
         CriteriaBuilder cb = em.getCriteriaBuilder();
         CriteriaQuery<Tag> query = cb.createQuery(Tag.class);
         Root<Tag> root = query.from(Tag.class);
@@ -121,13 +121,18 @@ public class TagStore {
                 .orderBy(cb.asc(root.get("tipo")))
                 .orderBy(cb.asc(root.get("tag")));
 
-        return em.createQuery(query)
-                .setFirstResult(start)
-                .setMaxResults(page)
-                .getResultList();
+        if (start != null && page != null) {
+            return em.createQuery(query)
+                    .setFirstResult(start)
+                    .setMaxResults(page)
+                    .getResultList();
+        } else {
+            return em.createQuery(query)
+                    .getResultList();
+        }
     }
-    
-public Integer searchCount(String searchTag, String searchTipo) {
+
+    public Integer searchCount(String searchTag, String searchTipo) {
         CriteriaBuilder cb = em.getCriteriaBuilder();
         CriteriaQuery<Long> query = cb.createQuery(Long.class);
         Root<Tag> root = query.from(Tag.class);
@@ -152,17 +157,17 @@ public Integer searchCount(String searchTag, String searchTipo) {
 
     }
 
-public Map<String,Object> searchToJson(String searchTag, String searchTipo,
+    public Map<String, Object> searchToJson(String searchTag, String searchTipo,
             Integer start, Integer page) {
-        
+
         int count = searchCount(searchTag, searchTipo);
-        
+
         List<Tag> search = search(searchTag, searchTipo, start, page);
-        
-        Map<String,Object> result = new HashMap<>();
+
+        Map<String, Object> result = new HashMap<>();
         result.put("count", count);
         result.put("data", search);
-        
+
         return result;
     }
 }
