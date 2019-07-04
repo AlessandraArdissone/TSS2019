@@ -11,5 +11,5 @@ package it.ciacformazione.mycloud;
  */
 public class Configurazione {
     
-    public static final String DOCUMENT_FOLDER = "/var/webapps/mycloud/";
+    public static final String DOCUMENT_FOLDER = "/home/tss/NetBeansProjects/TSS2019/Simulazione/docs/";
 }

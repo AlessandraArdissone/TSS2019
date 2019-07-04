@@ -45,7 +45,7 @@ public class DocumentoStore {
      * @return tutti i Documenti dell'utente loggato
      */
     public List<Documento> all() {
-        return em.createQuery("select e from Documento e where e.user = :usr")
+        return em.createQuery("select e from Documento e where e.utente = :usr")
                 .setParameter("usr", logged)
                 .getResultList();
     }

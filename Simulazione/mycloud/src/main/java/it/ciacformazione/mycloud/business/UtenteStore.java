@@ -137,7 +137,7 @@ public class UtenteStore {
         } catch (IOException ex) {
             throw new EJBException("Rimozione dell'utente fallita.");
         }
-        em.remove(find(id));
+        em.remove(toBeRemoved);
     }
     
     /**
