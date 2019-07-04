@@ -14,12 +14,15 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.security.Principal;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJBException;
 import javax.ejb.Stateless;
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import org.eclipse.microprofile.jwt.JsonWebToken;
 
 /**
  *
@@ -31,12 +34,15 @@ public class DocumentoStore {
     @PersistenceContext
     EntityManager em;
     
-    // TODO: utente corrente!
-    Utente logged;
+    @Inject
+    Principal principal;
+    
+    @Inject
+    JsonWebToken token;
     
     @PostConstruct
     public void init() {
-        logged = em.find(Utente.class, 1);
+        
     }
     
     /**
@@ -46,7 +52,7 @@ public class DocumentoStore {
      */
     public List<Documento> all() {
         return em.createQuery("select e from Documento e where e.utente = :usr")
-                .setParameter("usr", logged)
+                .setParameter("usr", principal.getName())
                 .getResultList();
     }
     

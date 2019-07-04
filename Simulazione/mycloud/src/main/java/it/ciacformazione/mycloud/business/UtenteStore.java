@@ -36,10 +36,10 @@ import javax.persistence.criteria.Root;
  */
 @Stateless
 public class UtenteStore {
-    
+
     @PersistenceContext()
     EntityManager em;
-    
+
     @Inject
     DocumentoStore docStore;
 
@@ -55,11 +55,22 @@ public class UtenteStore {
             return Optional.empty();
         }
     }
-    
+
+    public Optional<Utente> findByUserName(String usr) {
+        try {
+            Utente u = em.createQuery("select e from Utente e where e.username = :usr", Utente.class)
+                    .setParameter("usr", usr)
+                    .getSingleResult();
+            return Optional.of(u);
+        } catch (NoResultException | NonUniqueResultException ex) {
+            return Optional.empty();
+        }
+    }
+
     /**
-     * Restituisce tutti gli Utenti da DB
-     * (serve per scegliere con chi condividere)
-     * 
+     * Restituisce tutti gli Utenti da DB (serve per scegliere con chi
+     * condividere)
+     *
      * TODO: filtrare escludendo l'utente corrente
      *
      * @return tutti gli Utenti
@@ -67,7 +78,7 @@ public class UtenteStore {
     public List<Utente> all() {
         return em.createQuery("SELECT e FROM Utente e ORDER BY e.username", Utente.class)
                 .getResultList();
-/*        
+        /*        
         CriteriaBuilder cb = em.getCriteriaBuilder();
         CriteriaQuery<Utente> query = cb.createQuery(Utente.class);
         Root<Utente> root = query.from(Utente.class);
@@ -83,9 +94,9 @@ public class UtenteStore {
 
         return em.createQuery(query)
                 .getResultList();
-*/
+         */
     }
-    
+
     /**
      * Insert o Update su DB
      *
@@ -104,7 +115,7 @@ public class UtenteStore {
         }
         return saved;
     }
-    
+
     /**
      * Restituisce l'Utente con id
      *
@@ -114,14 +125,14 @@ public class UtenteStore {
     public Utente find(int id) {
         return em.find(Utente.class, id);
     }
-    
+
     private void deleteDirectoryStream(Path path) throws IOException {
         Files.walk(path)
                 .sorted(Comparator.reverseOrder())
                 .map(Path::toFile)
                 .forEach(File::delete);
     }
-            
+
     /**
      * Rimuove da DB l'Utente tramite id
      *
@@ -139,7 +150,7 @@ public class UtenteStore {
         }
         em.remove(toBeRemoved);
     }
-    
+
     /**
      * Restituisce gli utenti trovati in base alla ricerca
      *

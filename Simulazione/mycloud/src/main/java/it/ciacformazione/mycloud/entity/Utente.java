@@ -6,8 +6,8 @@
 package it.ciacformazione.mycloud.entity;
 
 import java.io.Serializable;
-import java.util.Set;
-import java.util.TreeSet;
+//import java.util.Set;
+//import java.util.TreeSet;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -37,7 +37,7 @@ public class Utente implements Serializable {
     @Column(name = "email", nullable = false, length = 45)
     private String email;
 
-    private Set<Documento> documenti = new TreeSet<>();
+    //private Set<Documento> documenti = new TreeSet<>();
     
     public Utente() {
     }
@@ -73,7 +73,7 @@ public class Utente implements Serializable {
     public void setEmail(String email) {
         this.email = email;
     }
-
+/*
     public Set<Documento> getDocumenti() {
         return documenti;
     }
@@ -81,7 +81,7 @@ public class Utente implements Serializable {
     public void setDocumenti(Set<Documento> documenti) {
         this.documenti = documenti;
     }
-
+*/
     @Override
     public int hashCode() {
         int hash = 3;
