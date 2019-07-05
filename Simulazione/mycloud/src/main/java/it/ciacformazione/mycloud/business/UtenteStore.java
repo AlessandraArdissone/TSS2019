@@ -126,7 +126,7 @@ public class UtenteStore {
         return em.find(Utente.class, id);
     }
 
-    private void deleteDirectoryStream(Path path) throws IOException {
+    private void deleteDirectory(Path path) throws IOException {
         Files.walk(path)
                 .sorted(Comparator.reverseOrder())
                 .map(Path::toFile)
@@ -144,7 +144,7 @@ public class UtenteStore {
                 .setParameter("usr", toBeRemoved)
                 .executeUpdate();
         try {
-            deleteDirectoryStream(Paths.get(Configurazione.DOCUMENT_FOLDER + toBeRemoved.getUsername()));
+            deleteDirectory(Paths.get(Configurazione.DOCUMENT_FOLDER + toBeRemoved.getUsername()));
         } catch (IOException ex) {
             throw new EJBException("Rimozione dell'utente fallita.");
         }

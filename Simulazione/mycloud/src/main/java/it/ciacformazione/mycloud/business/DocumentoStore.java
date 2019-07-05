@@ -38,6 +38,9 @@ public class DocumentoStore {
     Principal principal;
     
     @Inject
+    UtenteStore utenteStore;
+    
+    @Inject
     JsonWebToken token;
     
     @PostConstruct
@@ -61,12 +64,12 @@ public class DocumentoStore {
     }
     
     private Path documentPath(String name) {
-        return Paths.get(Configurazione.DOCUMENT_FOLDER +
-                logged.getUsername() + "/" + name);
+        return Paths.get(Configurazione.DOCUMENT_FOLDER
+                + principal.getName() + "/" + name);
     }
     
     public Documento save(Documento d, InputStream is) {
-        d.setUtente(logged);
+        d.setUtente(utenteStore.findByUserName(principal.getName()).get());
         Documento saved = em.merge(d);
         try {
             Files.copy(is, documentPath(saved.getFile()),
