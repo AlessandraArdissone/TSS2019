@@ -5,6 +5,7 @@
  */
 package it.ciacformazione.mycloud.entity;
 
+import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -21,7 +22,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "t_condivisioni")
-public class Condivisione {
+public class Condivisione implements Serializable{
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

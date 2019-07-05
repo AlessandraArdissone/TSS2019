@@ -16,7 +16,9 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.security.Principal;
 import java.util.List;
+import java.util.Optional;
 import javax.annotation.PostConstruct;
+import javax.annotation.security.RolesAllowed;
 import javax.ejb.EJBException;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -28,6 +30,7 @@ import org.eclipse.microprofile.jwt.JsonWebToken;
  *
  * @author tss
  */
+@RolesAllowed({"users"})
 @Stateless
 public class DocumentoStore {
     
@@ -38,10 +41,10 @@ public class DocumentoStore {
     Principal principal;
     
     @Inject
-    UtenteStore utenteStore;
+    JsonWebToken token;
     
     @Inject
-    JsonWebToken token;
+    UtenteStore utenteStore;
     
     @PostConstruct
     public void init() {
@@ -69,7 +72,9 @@ public class DocumentoStore {
     }
     
     public Documento save(Documento d, InputStream is) {
-        d.setUtente(utenteStore.findByUserName(principal.getName()).get());
+        Optional<Utente> utente = utenteStore.findByUserName(principal.getName());
+        Utente logged = utente.orElseThrow(() -> new EJBException("Utente non trovato: " + principal.getName()));
+        d.setUtente(logged);
         Documento saved = em.merge(d);
         try {
             Files.copy(is, documentPath(saved.getFile()),

@@ -35,6 +35,7 @@ public class SecurityResource {
 
     @PermitAll
     @GET
+    @Path("test")
     public Response login() {
 
         try {
@@ -51,11 +52,11 @@ public class SecurityResource {
     @PermitAll
     @POST
     public Response login(@FormParam("usr") String usr, @FormParam("pwd") String pwd) {
-        Optional<Utente> p = store.login(usr, pwd);
-        p.ifPresent(a -> System.out.println(a.getUsername()));
+        Optional<Utente> u = store.login(usr, pwd);
+        u.ifPresent(a -> System.out.println(a.getUsername()));
         JsonObject token = Json.createObjectBuilder().add("token",
-                JWTManager.generateJWTString("token.json", p.get().getUsername())).build();
-        return p.isPresent() ? Response.ok().entity(token).build()
+                JWTManager.generateJWTString("token.json", u.get().getUsername())).build();
+        return u.isPresent() ? Response.ok().entity(token).build()
                 : Response.status(Response.Status.UNAUTHORIZED).build();
     }
 }

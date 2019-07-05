@@ -27,7 +27,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "t_documenti")
-public class Documento implements Serializable{
+public class Documento implements Serializable {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -89,6 +89,14 @@ public class Documento implements Serializable{
         this.utente = utente;
     }
 
+    public List<String> getTags() {
+        return tags;
+    }
+
+    public void setTags(List<String> tags) {
+        this.tags = tags;
+    }
+    
     @Override
     public int hashCode() {
         int hash = 7;

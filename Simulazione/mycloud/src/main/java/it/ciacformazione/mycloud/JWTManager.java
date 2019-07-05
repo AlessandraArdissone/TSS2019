@@ -68,7 +68,7 @@ public class JWTManager {
             signedJWT.sign(new RSASSASigner(readPrivateKey("privateKey.pem")));
             String token = signedJWT.serialize();
             System.out.println("------------ curl command for test -------------");
-            System.out.println("curl -i -H'Authorization: Bearer " + token + "' http://localhost:8080/mycloud/resources/users");
+            System.out.println("curl -i -H'Authorization: Bearer " + token + "' http://localhost:8080/mycloud/resources/utenti");
             return token;
         } catch (JOSEException | IOException | ParseException | net.minidev.json.parser.ParseException ex) {
             throw new RuntimeException("error in create JWT string", ex);

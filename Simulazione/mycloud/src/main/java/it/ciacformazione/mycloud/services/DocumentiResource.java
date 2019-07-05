@@ -27,14 +27,15 @@ import org.glassfish.jersey.media.multipart.FormDataParam;
 @RolesAllowed({"users"})
 @Path("/documenti")
 public class DocumentiResource {
-    
-    @Inject DocumentoStore docStore;
-    
+
+    @Inject
+    DocumentoStore docStore;
+
     @GET
     public List<Documento> findAll() {
         return docStore.all();
     }
-    
+
     @POST
     @Consumes(MediaType.MULTIPART_FORM_DATA)
     public Response uploadFile(
