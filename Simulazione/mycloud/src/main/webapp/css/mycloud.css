@@ -1,0 +1,265 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 15-jul-2019, 9.14.49
+    Author     : tss
+*/
+@font-face {
+    font-family: 'antaro';
+    src: url('../font/antaro.otf') format('opentype');
+}
+
+* {
+    font-family: 'antaro';
+}
+
+h1 {
+    text-align: center;
+    font-size: 600%;
+    margin-bottom: 0px;
+}
+
+.logo {
+    display:block;
+    margin:0px auto;
+    text-align:center;
+    height: 50%;
+    width: 50%;
+}
+
+.campo label:first-child {
+    display: inline-block;
+    width: 10em;
+    vertical-align: top;
+}
+/*  IDEM:
+.campo label:nth-child(1) {
+    display: inline-block;
+    width: 20%;
+}
+*/
+.campo {
+    width: 35em;
+    /*margin: auto;*/
+    padding-bottom: 5px;
+}
+
+#div_cont_nav {
+    display: flex;
+}
+
+#div_nav {
+    text-align: center;
+    width: 17em;
+}
+
+input, textarea, select {
+    border: solid 1px blue;
+}
+
+input:focus, textarea:focus, select:focus {
+    outline: solid 1px red;
+}
+
+input[type=text], input[type=password], input[type=date], textarea, select {
+    width: 20em;
+}
+
+input[type=button],input[type=submit],input[type=reset] {
+    width: 10em;
+}
+
+textarea {
+    height: 7em;
+    resize: none;
+}
+
+@media (orientation: portrait) {
+    h1 {
+        font-size: 500%;
+    }
+
+    .campo {
+        width: 100%;
+        text-align: center;
+    }
+
+    .campo label:nth-child(1) {
+        width: 100%;
+        display: block;
+        text-align: center;
+    }
+
+    #div_cont_nav {
+        display: block;
+    }
+
+    #div_nav {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+table.tabella {
+    border-collapse: collapse;
+    /*font-family: "Arial";*/
+    border: 1px solid gray;
+}
+
+table.tabella tr:nth-child(even) {
+    background-color: lightblue;
+}
+
+table.tabella th {
+    font-size: 20px;
+    border: 1px solid gray;
+    background-color: blue;
+    color: white;
+}
+
+table.tabella td {
+    font-size: 18px;
+    border: 1px solid gray;
+    border-bottom: none;
+    border-top: none;
+}
+
+span.inserisciDB {
+    background-image: url(../ico/New-record-icon.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    /*background-position: center;*/
+    vertical-align: middle;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+}
+
+span.modificaDB {
+    background-image: url(../ico/edit-icon.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    /*background-position: center;*/
+    vertical-align: middle;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+}
+
+span.eliminaDB {
+    background-image: url(../ico/Trash-can-icon.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    /*background-position: center;*/
+    vertical-align: middle;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+}
+
+span.navigator {
+    border: 1px solid blue;
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-left: 2px;
+    margin-right: 2px;
+}
+
+body {margin: 0;}
+
+ul.sidenav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 25%;
+    background-color: #D3FFFF;
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+}
+
+ul.sidenav li a {
+    display: block;
+    color: #000;
+    background-color: #7badfc;
+    padding: 8px 16px;
+    text-decoration: none;
+    font-weight: bolder;
+}
+
+ul.sidenav li a.active {
+    background-color: #3480f9;
+    color: white;
+}
+
+ul.sidenav li a:hover {
+    background-color: #444;
+    color: white;
+}
+
+ul.sidenav li a:hover:not(.active) {
+    background-color: #555;
+    color: white;
+}
+
+.content {
+    margin-left: 25%;
+    padding: 5px 5px;
+}
+
+@media screen and (max-width: 900px) {
+    header {
+        position: sticky;
+        position: -webkit-sticky; /* Safari */
+        top: 0;
+    }
+
+    ul.sidenav {
+        width: 100%;
+        height: auto;
+        position: relative;
+    }
+
+    ul.sidenav li a {
+        float: left;
+        padding: 15px;
+        width: 8em;
+    }
+
+    h1 {
+        font-size: 400%;
+    }
+
+    .content {margin-left: 0;}
+
+    footer {
+        width: 100% !important;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    ul.sidenav li a {
+        text-align: center;
+        float: none;
+        width: auto;
+    }
+
+    h1 {
+        font-size: 300%;
+    }
+}
+
+footer {
+    text-align: center;
+    font-weight: bolder;
+    font-size: smaller;
+    background-color: blue;
+    color: white;
+    padding: inherit !important;
+    position: fixed;
+    bottom: 0;
+    width: 75%;
+}
