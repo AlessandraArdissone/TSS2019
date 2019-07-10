@@ -5,4 +5,12 @@
  */
 document.querySelector("#homeMenu").classList.add("active");
 
-//console.log("pagina nostalciac.js");
+document.querySelector("#pLogin").onclick = function () {
+    window.location.assign("login.jsp");
+};
+
+document.querySelector("#pRegister").onclick = function () {
+    window.location.assign("register.jsp");
+};
+
+//console.log("pagina mycloud.js");

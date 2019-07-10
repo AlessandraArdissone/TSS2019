@@ -18,6 +18,14 @@
             <article>
                 <h1>myCloud!</h1>
                 <img class="logo" src="img/mycloud.png" />
+                    <div class="logreg">
+                        <label for="pLogin">Sei già registrato?</label> <!-- for: ID dell'input! -->
+                        <input type="button" value="Accedi" id="pLogin" />
+                    </div>
+                    <div class="logreg">
+                        <label for="pButton">oppure</label> <!-- for: ID dell'input! -->
+                        <input type="button" value="Registrati" id="pRegister" />
+                    </div>
             </article>
         </main>
         <jsp:include page="./includes/footer.jsp" />

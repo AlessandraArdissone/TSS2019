@@ -20,6 +20,7 @@ h1 {
     text-align: center;
     font-size: 600%;
     margin-bottom: 0px;
+    margin-top: 20px;
 }
 
 .logo {
@@ -28,6 +29,19 @@ h1 {
     text-align:center;
     height: 50%;
     width: 50%;
+}
+
+.logreg {
+    width: 100%;
+    text-align: center;
+    padding-bottom: 5px;
+}
+
+.logreg label:nth-child(1) {
+    width: 100%;
+    display: block;
+    text-align: center;
+    vertical-align: top;
 }
 
 .campo label:first-child {
@@ -207,7 +221,7 @@ ul.sidenav li a:hover:not(.active) {
 
 .content {
     margin-left: 25%;
-    padding: 5px 5px;
+    padding: 10px 10px;
 }
 
 @media screen and (max-width: 900px) {
